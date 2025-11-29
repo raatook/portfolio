@@ -1,5 +1,6 @@
 "use client";
 
+import FloatingContactButton from "../FloatingContactButton";
 import AddedValueSection from "./home/AddedValueSection";
 import CompactProjectsSection from "./home/CompactProjectsSection";
 import ContactSection from "./home/ContactSection";
@@ -17,6 +18,8 @@ export default function HomePageClient() {
       <ServicesExpertiseSection />
 
       <ProjectsSection />
+
+      <FloatingContactButton />
 
     </div>
   );

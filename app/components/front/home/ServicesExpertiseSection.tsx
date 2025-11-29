@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Sparkles, ArrowRight, Code2 } from "lucide-react";
+import { Sparkles, Code2 } from "lucide-react";
 
 export default function ServicesExpertiseSection() {
   const [activeService, setActiveService] = useState(0);
@@ -88,70 +88,70 @@ export default function ServicesExpertiseSection() {
   }, [techStack.length]);
 
   return (
-    <section className="relative py-24 bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-950 overflow-hidden" id="services">
-      {/* Background Elements */}
+    <section className="relative py-12 md:py-20 lg:py-24 bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-950 overflow-hidden px-4 sm:px-6 max-w-full" id="services">
+      {/* Background Elements - ajustés */}
       <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-20 right-10 w-96 h-96 bg-indigo-500/20 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-20 left-10 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+        <div className="absolute top-20 right-4 sm:right-10 w-48 h-48 md:w-96 md:h-96 bg-indigo-500/20 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-20 left-4 sm:left-10 w-48 h-48 md:w-96 md:h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
       </div>
 
       {/* Grid Pattern */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:64px_64px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,black,transparent)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:32px_32px] sm:bg-[size:64px_64px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,black,transparent)]" />
 
-      <div className="max-w-7xl mx-auto px-6 relative">
+      <div className="max-w-7xl mx-auto relative">
         {/* Header */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-500/10 border border-indigo-500/20 backdrop-blur-xl mb-6">
-            <Sparkles className="w-4 h-4 text-indigo-400" />
-            <span className="text-sm font-semibold text-indigo-300">Services & Expertise</span>
+        <div className="text-center mb-10 md:mb-16">
+          <div className="inline-flex items-center gap-2 px-3 md:px-4 py-1.5 md:py-2 rounded-full bg-indigo-500/10 border border-indigo-500/20 backdrop-blur-xl mb-4 md:mb-6">
+            <Sparkles className="w-3 h-3 md:w-4 md:h-4 text-indigo-400" />
+            <span className="text-xs md:text-sm font-semibold text-indigo-300">Services & Expertise</span>
           </div>
 
-          <h2 className="text-5xl md:text-6xl font-black mb-6 leading-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-4 md:mb-6 leading-tight">
             <span className="bg-gradient-to-r from-white via-indigo-200 to-purple-200 bg-clip-text text-transparent">
               Ce que je propose
             </span>
           </h2>
 
-          <p className="text-xl text-slate-400 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg md:text-xl text-slate-400 max-w-3xl mx-auto leading-relaxed px-4">
             Des solutions complètes pour tous vos besoins digitaux
           </p>
         </div>
 
-        {/* Services Grid - Compact 3x2 */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-16">
+        {/* Services Grid - Responsive */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4 mb-10 md:mb-16">
           {services.map((service, index) => (
             <div
               key={service.id}
               onMouseEnter={() => setActiveService(index)}
               className="group relative"
             >
-              <div className={`relative h-full p-6 rounded-2xl border-2 transition-all duration-500 cursor-pointer bg-white/5 backdrop-blur-xl ${
+              <div className={`relative h-full p-4 md:p-6 rounded-xl md:rounded-2xl border-2 transition-all duration-500 cursor-pointer bg-white/5 backdrop-blur-xl ${
                 activeService === index
                   ? 'border-white/20 shadow-2xl scale-105'
                   : 'border-white/10 hover:border-white/20'
               }`}>
                 {/* Gradient glow on hover */}
                 {activeService === index && (
-                  <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${service.color} opacity-10 blur-xl -z-10`} />
+                  <div className={`absolute inset-0 rounded-xl md:rounded-2xl bg-gradient-to-br ${service.color} opacity-10 blur-xl -z-10`} />
                 )}
 
                 {/* Icon */}
-                <div className={`w-12 h-12 rounded-xl ${service.bgColor} flex items-center justify-center mb-4 transition-all duration-500 ${
+                <div className={`w-10 h-10 md:w-12 md:h-12 rounded-lg md:rounded-xl ${service.bgColor} flex items-center justify-center mb-3 md:mb-4 transition-all duration-500 ${
                   activeService === index ? 'scale-110 rotate-6' : ''
                 }`}>
-                  <i className={`fas ${service.icon} text-2xl bg-gradient-to-br ${service.color} bg-clip-text text-transparent`} />
+                  <i className={`fas ${service.icon} text-xl md:text-2xl bg-gradient-to-br ${service.color} bg-clip-text text-transparent`} />
                 </div>
 
                 {/* Content */}
-                <h3 className="text-lg font-bold text-white mb-2">
+                <h3 className="text-base md:text-lg font-bold text-white mb-2">
                   {service.title}
                 </h3>
-                <p className="text-slate-400 text-sm leading-relaxed">
+                <p className="text-slate-400 text-xs md:text-sm leading-relaxed">
                   {service.description}
                 </p>
 
                 {/* Animated line */}
-                <div className={`h-1 mt-4 rounded-full bg-gradient-to-r ${service.color} transition-all duration-500 ${
+                <div className={`h-1 mt-3 md:mt-4 rounded-full bg-gradient-to-r ${service.color} transition-all duration-500 ${
                   activeService === index ? 'w-full' : 'w-0'
                 }`} />
               </div>
@@ -162,31 +162,31 @@ export default function ServicesExpertiseSection() {
         {/* Tech Stack Showcase */}
         <div className="relative">
           {/* Header */}
-          <div className="text-center mb-8">
-            <div className="flex items-center justify-center gap-2 mb-4">
-              <Code2 className="w-5 h-5 text-indigo-400" />
-              <h3 className="text-2xl font-bold text-white">Stack Technique</h3>
+          <div className="text-center mb-6 md:mb-8">
+            <div className="flex items-center justify-center gap-2 mb-3 md:mb-4">
+              <Code2 className="w-4 h-4 md:w-5 md:h-5 text-indigo-400" />
+              <h3 className="text-xl md:text-2xl font-bold text-white">Stack Technique</h3>
             </div>
-            <p className="text-slate-400">Technologies que je maîtrise</p>
+            <p className="text-sm md:text-base text-slate-400">Technologies que je maîtrise</p>
           </div>
 
           {/* Infinite scroll carousel */}
           <div className="relative overflow-hidden">
             {/* Gradient masks */}
-            <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-slate-950 to-transparent z-10" />
-            <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-slate-950 to-transparent z-10" />
+            <div className="absolute left-0 top-0 bottom-0 w-10 md:w-20 bg-gradient-to-r from-slate-950 to-transparent z-10" />
+            <div className="absolute right-0 top-0 bottom-0 w-10 md:w-20 bg-gradient-to-l from-slate-950 to-transparent z-10" />
 
             {/* Scrolling container */}
-            <div className="flex gap-6 animate-scroll py-8">
+            <div className="flex gap-3 md:gap-6 animate-scroll py-6 md:py-8">
               {/* Duplicate array for seamless loop */}
               {[...techStack, ...techStack].map((tech, index) => (
                 <div
                   key={index}
-                  className="group flex-shrink-0 w-20 h-20 bg-white/5 backdrop-blur-xl rounded-2xl border-2 border-white/10 hover:border-indigo-400 flex flex-col items-center justify-center gap-2 transition-all hover:scale-110 hover:shadow-xl cursor-pointer"
+                  className="group flex-shrink-0 w-16 h-16 md:w-20 md:h-20 bg-white/5 backdrop-blur-xl rounded-xl md:rounded-2xl border-2 border-white/10 hover:border-indigo-400 flex flex-col items-center justify-center gap-1 md:gap-2 transition-all hover:scale-110 hover:shadow-xl cursor-pointer"
                   title={tech.name}
                 >
                   <i 
-                    className={`${tech.icon} text-3xl transition-colors`}
+                    className={`${tech.icon} text-2xl md:text-3xl transition-colors`}
                     style={{ color: tech.color }}
                   />
                   <span className="text-xs font-semibold text-slate-400 group-hover:text-white transition-colors text-center px-1">

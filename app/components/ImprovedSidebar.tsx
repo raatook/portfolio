@@ -56,7 +56,7 @@ export default function ImprovedSidebar() {
   };
 
   return (
-    <aside className="hidden xl:block w-96 sticky top-0 h-screen overflow-y-auto bg-slate-50 border-l-4 border-slate-200 shadow-xl">
+    <aside className="hidden min-[720px]:block w-80 lg:w-96 sticky top-0 h-screen overflow-y-auto bg-slate-50 border-l-4 border-slate-200 shadow-xl">
       <div className="p-6 space-y-4">
         {/* Navigation Menu - Compact */}
         <div>

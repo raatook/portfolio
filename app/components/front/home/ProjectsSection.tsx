@@ -81,12 +81,12 @@ export default function ProjectsSection() {
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % projects.length);
-    setCurrentImageIndex(0); // Reset image index when changing project
+    setCurrentImageIndex(0);
   };
 
   const prevSlide = () => {
     setCurrentSlide((prev) => (prev - 1 + projects.length) % projects.length);
-    setCurrentImageIndex(0); // Reset image index when changing project
+    setCurrentImageIndex(0);
   };
 
   const nextImage = () => {
@@ -111,22 +111,22 @@ export default function ProjectsSection() {
   }, [currentProject.images.length, isHovering]);
 
   return (
-    <section className="relative py-24 bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-950 overflow-hidden" id="projects">
+    <section className="relative py-12 md:py-20 lg:py-24 bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-950 overflow-hidden px-4 sm:px-6 max-w-full" id="projects">
       {/* Background Effects */}
       <div className="absolute inset-0 opacity-30">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-indigo-500/20 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl" />
+        <div className="absolute top-0 left-1/4 w-48 h-48 md:w-96 md:h-96 bg-indigo-500/20 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 right-1/4 w-48 h-48 md:w-96 md:h-96 bg-purple-500/20 rounded-full blur-3xl" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 relative">
+      <div className="max-w-7xl mx-auto relative">
         {/* Header */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-500/10 border border-indigo-500/20 backdrop-blur-xl mb-6">
-            <Sparkles className="w-4 h-4 text-indigo-400" />
-            <span className="text-sm font-semibold text-indigo-300">Projets Récents</span>
+        <div className="text-center mb-10 md:mb-16">
+          <div className="inline-flex items-center gap-2 px-3 md:px-4 py-1.5 md:py-2 rounded-full bg-indigo-500/10 border border-indigo-500/20 backdrop-blur-xl mb-4 md:mb-6">
+            <Sparkles className="w-3 h-3 md:w-4 md:h-4 text-indigo-400" />
+            <span className="text-xs md:text-sm font-semibold text-indigo-300">Projets Récents</span>
           </div>
           
-          <h2 className="text-5xl md:text-6xl font-black mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-4">
             <span className="bg-gradient-to-r from-white via-indigo-200 to-purple-200 bg-clip-text text-transparent">
               Mes Réalisations
             </span>
@@ -134,8 +134,8 @@ export default function ProjectsSection() {
         </div>
 
         {/* Main Slide with Details */}
-        <div className="relative mb-8">
-          <div className="grid lg:grid-cols-2 gap-8 bg-white/5 backdrop-blur-xl rounded-3xl border border-white/10 overflow-hidden">
+        <div className="relative mb-6 md:mb-8">
+          <div className="grid lg:grid-cols-2 gap-0 lg:gap-8 bg-white/5 backdrop-blur-xl rounded-2xl md:rounded-3xl border border-white/10 overflow-hidden">
             {/* Left: Image Gallery */}
             <div className="relative">
               <div 
@@ -155,110 +155,90 @@ export default function ProjectsSection() {
                   <>
                     <button
                       onClick={prevImage}
-                      className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/50 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white hover:bg-black/70 transition-all opacity-0 group-hover:opacity-100"
+                      className="absolute left-2 md:left-3 top-1/2 -translate-y-1/2 w-8 h-8 md:w-10 md:h-10 rounded-full bg-black/50 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white hover:bg-black/70 transition-all opacity-0 group-hover:opacity-100"
                       aria-label="Image précédente"
                     >
-                      <ChevronLeft className="w-5 h-5" />
+                      <ChevronLeft className="w-4 h-4 md:w-5 md:h-5" />
                     </button>
                     <button
                       onClick={nextImage}
-                      className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/50 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white hover:bg-black/70 transition-all opacity-0 group-hover:opacity-100"
+                      className="absolute right-2 md:right-3 top-1/2 -translate-y-1/2 w-8 h-8 md:w-10 md:h-10 rounded-full bg-black/50 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white hover:bg-black/70 transition-all opacity-0 group-hover:opacity-100"
                       aria-label="Image suivante"
                     >
-                      <ChevronRight className="w-5 h-5" />
+                      <ChevronRight className="w-4 h-4 md:w-5 md:h-5" />
                     </button>
                     
                     {/* Image Counter */}
-                    <div className="absolute bottom-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-black/50 backdrop-blur-sm text-white text-xs font-medium">
+                    <div className="absolute bottom-2 md:bottom-3 left-1/2 -translate-x-1/2 px-2 md:px-3 py-1 rounded-full bg-black/50 backdrop-blur-sm text-white text-xs font-medium">
                       {currentImageIndex + 1} / {currentProject.images.length}
                     </div>
                   </>
                 )}
               </div>
-
-              {/* Image Thumbnails (only if multiple images) */}
-              {currentProject.images.length > 1 && (
-                <div className="absolute bottom-3 left-3 right-3 flex gap-2 justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                  {currentProject.images.map((img, idx) => (
-                    <button
-                      key={idx}
-                      onClick={() => setCurrentImageIndex(idx)}
-                      className={`w-12 h-12 rounded-lg overflow-hidden transition-all ${
-                        currentImageIndex === idx 
-                          ? 'ring-2 ring-white scale-110' 
-                          : 'opacity-50 hover:opacity-100'
-                      }`}
-                      aria-label={`Image ${idx + 1}`}
-                    >
-                      <img src={img} alt={`Thumbnail ${idx + 1}`} className="w-full h-full object-cover" />
-                    </button>
-                  ))}
-                </div>
-              )}
             </div>
 
             {/* Right: Details */}
-            <div className="p-8 lg:p-10 flex flex-col justify-center">
+            <div className="p-6 md:p-8 lg:p-10 flex flex-col justify-center">
               {/* Title & Description */}
-              <div className="mb-6">
-                <h3 className="text-3xl md:text-4xl font-black text-white mb-3">
+              <div className="mb-4 md:mb-6">
+                <h3 className="text-2xl md:text-3xl lg:text-4xl font-black text-white mb-2 md:mb-3">
                   {currentProject.title}
                 </h3>
-                <p className="text-slate-300 text-lg">
+                <p className="text-slate-300 text-sm md:text-base lg:text-lg">
                   {currentProject.description}
                 </p>
               </div>
 
               {/* Info Grid */}
-              <div className="grid grid-cols-2 gap-3 mb-6">
-                <div className="p-3 bg-white/5 rounded-xl border border-white/10">
-                  <div className="flex items-center gap-2 mb-1">
-                    <User className="w-4 h-4 text-blue-400" />
+              <div className="grid grid-cols-2 gap-2 md:gap-3 mb-4 md:mb-6">
+                <div className="p-2 md:p-3 bg-white/5 rounded-lg md:rounded-xl border border-white/10">
+                  <div className="flex items-center gap-1 md:gap-2 mb-1">
+                    <User className="w-3 h-3 md:w-4 md:h-4 text-blue-400" />
                     <span className="text-xs text-slate-400">Client</span>
                   </div>
-                  <p className="text-white font-semibold text-sm">{currentProject.client}</p>
+                  <p className="text-white font-semibold text-xs md:text-sm">{currentProject.client}</p>
                 </div>
 
-                <div className="p-3 bg-white/5 rounded-xl border border-white/10">
-                  <div className="flex items-center gap-2 mb-1">
-                    <Calendar className="w-4 h-4 text-purple-400" />
+                <div className="p-2 md:p-3 bg-white/5 rounded-lg md:rounded-xl border border-white/10">
+                  <div className="flex items-center gap-1 md:gap-2 mb-1">
+                    <Calendar className="w-3 h-3 md:w-4 md:h-4 text-purple-400" />
                     <span className="text-xs text-slate-400">Année</span>
                   </div>
-                  <p className="text-white font-semibold text-sm">{currentProject.year}</p>
+                  <p className="text-white font-semibold text-xs md:text-sm">{currentProject.year}</p>
                 </div>
 
-                <div className="p-3 bg-white/5 rounded-xl border border-white/10">
-                  <div className="flex items-center gap-2 mb-1">
-                    <Clock className="w-4 h-4 text-cyan-400" />
+                <div className="p-2 md:p-3 bg-white/5 rounded-lg md:rounded-xl border border-white/10">
+                  <div className="flex items-center gap-1 md:gap-2 mb-1">
+                    <Clock className="w-3 h-3 md:w-4 md:h-4 text-cyan-400" />
                     <span className="text-xs text-slate-400">Durée</span>
                   </div>
-                  <p className="text-white font-semibold text-sm">{currentProject.duration}</p>
+                  <p className="text-white font-semibold text-xs md:text-sm">{currentProject.duration}</p>
                 </div>
 
-                <div className="p-3 bg-white/5 rounded-xl border border-white/10">
+                <div className="p-2 md:p-3 bg-white/5 rounded-lg md:rounded-xl border border-white/10">
                   <a 
                     href={currentProject.link} 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-green-400 hover:text-green-300 transition-colors group"
+                    className="flex items-center gap-1 md:gap-2 text-green-400 hover:text-green-300 transition-colors group"
                   >
-                    <ExternalLink className="w-4 h-4" />
-                    <span className="text-sm font-semibold">Voir en ligne</span>
+                    <ExternalLink className="w-3 h-3 md:w-4 md:h-4" />
+                    <span className="text-xs md:text-sm font-semibold">Voir</span>
                   </a>
                 </div>
               </div>
 
               {/* Technologies */}
-              <div className="mb-6">
-                <div className="flex items-center gap-2 mb-3">
-                  <Code2 className="w-4 h-4 text-indigo-400" />
-                  <h4 className="text-white font-bold text-sm">Technologies</h4>
+              <div className="mb-4 md:mb-6">
+                <div className="flex items-center gap-2 mb-2 md:mb-3">
+                  <Code2 className="w-3 h-3 md:w-4 md:h-4 text-indigo-400" />
+                  <h4 className="text-white font-bold text-xs md:text-sm">Technologies</h4>
                 </div>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-1.5 md:gap-2">
                   {currentProject.tags.map((tag, idx) => (
                     <span
                       key={idx}
-                      className="px-3 py-1 rounded-lg bg-white/10 backdrop-blur-xl border border-white/20 text-white text-xs font-medium"
+                      className="px-2 md:px-3 py-1 rounded-lg bg-white/10 backdrop-blur-xl border border-white/20 text-white text-xs font-medium"
                     >
                       {tag}
                     </span>
@@ -267,23 +247,23 @@ export default function ProjectsSection() {
               </div>
 
               {/* Challenge & Solution */}
-              <div className="space-y-4">
-                <div className="p-4 bg-orange-500/10 rounded-xl border border-orange-500/20">
-                  <div className="flex items-center gap-2 mb-2">
-                    <Target className="w-4 h-4 text-orange-400" />
-                    <h4 className="text-white font-bold text-sm">Challenge</h4>
+              <div className="space-y-3 md:space-y-4">
+                <div className="p-3 md:p-4 bg-orange-500/10 rounded-lg md:rounded-xl border border-orange-500/20">
+                  <div className="flex items-center gap-2 mb-1 md:mb-2">
+                    <Target className="w-3 h-3 md:w-4 md:h-4 text-orange-400" />
+                    <h4 className="text-white font-bold text-xs md:text-sm">Challenge</h4>
                   </div>
-                  <p className="text-slate-300 text-sm leading-relaxed">
+                  <p className="text-slate-300 text-xs md:text-sm leading-relaxed">
                     {currentProject.challenge}
                   </p>
                 </div>
 
-                <div className="p-4 bg-green-500/10 rounded-xl border border-green-500/20">
-                  <div className="flex items-center gap-2 mb-2">
-                    <Lightbulb className="w-4 h-4 text-green-400" />
-                    <h4 className="text-white font-bold text-sm">Solution</h4>
+                <div className="p-3 md:p-4 bg-green-500/10 rounded-lg md:rounded-xl border border-green-500/20">
+                  <div className="flex items-center gap-2 mb-1 md:mb-2">
+                    <Lightbulb className="w-3 h-3 md:w-4 md:h-4 text-green-400" />
+                    <h4 className="text-white font-bold text-xs md:text-sm">Solution</h4>
                   </div>
-                  <p className="text-slate-300 text-sm leading-relaxed">
+                  <p className="text-slate-300 text-xs md:text-sm leading-relaxed">
                     {currentProject.solution}
                   </p>
                 </div>
@@ -291,25 +271,25 @@ export default function ProjectsSection() {
             </div>
           </div>
 
-          {/* Project Navigation Arrows */}
+          {/* Project Navigation Arrows - Hidden on mobile */}
           <button
             onClick={prevSlide}
-            className="absolute -left-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 flex items-center justify-center text-white hover:bg-white/20 transition-all z-10"
+            className="hidden md:flex absolute -left-4 lg:-left-6 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 items-center justify-center text-white hover:bg-white/20 transition-all z-10"
             aria-label="Projet précédent"
           >
-            <ChevronLeft className="w-6 h-6" />
+            <ChevronLeft className="w-5 h-5 md:w-6 md:h-6" />
           </button>
           <button
             onClick={nextSlide}
-            className="absolute -right-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 flex items-center justify-center text-white hover:bg-white/20 transition-all z-10"
+            className="hidden md:flex absolute -right-4 lg:-right-6 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 items-center justify-center text-white hover:bg-white/20 transition-all z-10"
             aria-label="Projet suivant"
           >
-            <ChevronRight className="w-6 h-6" />
+            <ChevronRight className="w-5 h-5 md:w-6 md:h-6" />
           </button>
         </div>
 
         {/* Project Thumbnails */}
-        <div className="flex gap-4 justify-center">
+        <div className="flex gap-2 md:gap-4 justify-center overflow-x-auto pb-2 px-4">
           {projects.map((project, idx) => (
             <button
               key={project.id}
@@ -317,9 +297,9 @@ export default function ProjectsSection() {
                 setCurrentSlide(idx);
                 setCurrentImageIndex(0);
               }}
-              className={`relative w-24 h-24 rounded-2xl overflow-hidden transition-all ${
+              className={`relative flex-shrink-0 w-16 h-16 md:w-24 md:h-24 rounded-lg md:rounded-2xl overflow-hidden transition-all ${
                 currentSlide === idx 
-                  ? 'ring-4 ring-white scale-110' 
+                  ? 'ring-2 md:ring-4 ring-white scale-110' 
                   : 'opacity-50 hover:opacity-100'
               }`}
               aria-label={`Voir ${project.title}`}
@@ -334,7 +314,7 @@ export default function ProjectsSection() {
               )}
               {/* Badge pour indiquer le nombre d'images */}
               {project.images.length > 1 && (
-                <div className="absolute top-1 right-1 px-1.5 py-0.5 bg-black/70 rounded text-white text-xs font-bold">
+                <div className="absolute top-0.5 right-0.5 md:top-1 md:right-1 px-1 md:px-1.5 py-0.5 bg-black/70 rounded text-white text-xs font-bold">
                   {project.images.length}
                 </div>
               )}

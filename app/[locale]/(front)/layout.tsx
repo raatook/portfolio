@@ -1,4 +1,3 @@
-// front/app/[locale]/(front)/layout.tsx
 import { Inter } from "next/font/google";
 import React from "react";
 import "../../globals.css";
@@ -36,6 +35,7 @@ export default async function FrontLayout({
       <head>
         <meta name="description" content={metadata.description + ""} />
         <title>{metadata.title + ""}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -44,16 +44,16 @@ export default async function FrontLayout({
           referrerPolicy="no-referrer"
         />
       </head>
-      <body className={`${inter.variable} font-sans antialiased`}>
+      <body className={`${inter.variable} font-sans antialiased overflow-x-hidden`}>
         <Providers locale={locale}>
-          {/* Structure en colonnes : contenu principal + sidebar */}
-          <div className="flex min-h-screen bg-white">
+          {/* Structure responsive : contenu + sidebar visible à partir de 720px */}
+          <div className="flex min-h-screen bg-slate-950">
             {/* Contenu principal */}
-            <main className="flex-1">
+            <main className="flex-1 w-full min-w-0">
               {children}
             </main>
             
-            {/* Sidebar - visible uniquement sur grands écrans */}
+            {/* Sidebar - toujours présente dans le DOM, visibilité gérée par ImprovedSidebar */}
             <ImprovedSidebar />
           </div>
         </Providers>
