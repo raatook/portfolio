@@ -1,12 +1,28 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Globe, Mail, Phone, MapPin, Github, Linkedin, Twitter, Send, MessageSquare, User, CheckCircle } from "lucide-react";
+import {
+  Globe,
+  Mail,
+  Phone,
+  MapPin,
+  Github,
+  Linkedin,
+  Twitter,
+  Send,
+  MessageSquare,
+  User,
+  CheckCircle,
+} from "lucide-react";
 import { useChangeLocale, useCurrentLocale } from "@/app/locales/client";
 
 export default function ImprovedSidebar() {
   const [activeSection, setActiveSection] = useState("home");
-  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
 
@@ -35,7 +51,7 @@ export default function ImprovedSidebar() {
 
   const handleSubmit = async () => {
     setIsSubmitting(true);
-    await new Promise(resolve => setTimeout(resolve, 1500));
+    await new Promise((resolve) => setTimeout(resolve, 1500));
     setIsSubmitting(false);
     setIsSuccess(true);
     setFormData({ name: "", email: "", message: "" });
@@ -45,7 +61,7 @@ export default function ImprovedSidebar() {
   const navItems = [
     { id: "home", label: { fr: "Accueil", en: "Home" } },
     { id: "services", label: { fr: "Services", en: "Services" } },
-    { id: "projects", label: { fr: "Projets", en: "Projects" } }
+    { id: "projects", label: { fr: "Projets", en: "Projects" } },
   ];
 
   const scrollToSection = (id: string) => {
@@ -56,7 +72,17 @@ export default function ImprovedSidebar() {
   };
 
   return (
-    <aside className="hidden min-[720px]:block w-80 lg:w-96 sticky top-0 h-screen overflow-y-auto bg-slate-50 border-l-4 border-slate-200 shadow-xl">
+    <aside
+      className="
+  max-[720px]:hidden min-[720px]:fixed
+  right-0 top-0
+  w-80 lg:w-96
+  h-screen
+  overflow-y-auto
+  bg-slate-50 border-l-4 border-slate-200 shadow-xl
+  z-50
+"
+    >
       <div className="p-6 space-y-4">
         {/* Navigation Menu - Compact */}
         <div>
@@ -85,11 +111,11 @@ export default function ImprovedSidebar() {
         <div>
           <h3 className="text-slate-900 font-semibold mb-2 text-sm flex items-center gap-2">
             <Globe className="w-3.5 h-3.5 text-indigo-600" />
-            {currentLocale === 'fr' ? 'Langue' : 'Language'}
+            {currentLocale === "fr" ? "Langue" : "Language"}
           </h3>
           <div className="flex gap-2">
             <button
-              onClick={() => changeLocale('fr')}
+              onClick={() => changeLocale("fr")}
               className={`flex-1 px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
                 currentLocale === "fr"
                   ? "bg-indigo-600 text-white shadow-md"
@@ -99,7 +125,7 @@ export default function ImprovedSidebar() {
               🇫🇷 FR
             </button>
             <button
-              onClick={() => changeLocale('en')}
+              onClick={() => changeLocale("en")}
               className={`flex-1 px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
                 currentLocale === "en"
                   ? "bg-indigo-600 text-white shadow-md"
@@ -118,13 +144,23 @@ export default function ImprovedSidebar() {
             Contact
           </h3>
           <div className="space-y-2">
-            <a href="mailto:contact@exemple.com" className="flex items-center gap-2 p-2 bg-white rounded-lg hover:bg-slate-100 transition-all group text-xs border border-slate-200 shadow-sm">
+            <a
+              href="mailto:contact@exemple.com"
+              className="flex items-center gap-2 p-2 bg-white rounded-lg hover:bg-slate-100 transition-all group text-xs border border-slate-200 shadow-sm"
+            >
               <Mail className="w-4 h-4 text-indigo-600 flex-shrink-0" />
-              <span className="text-slate-700 group-hover:text-slate-900 transition-colors truncate">contact@exemple.com</span>
+              <span className="text-slate-700 group-hover:text-slate-900 transition-colors truncate">
+                contact@exemple.com
+              </span>
             </a>
-            <a href="tel:+33612345678" className="flex items-center gap-2 p-2 bg-white rounded-lg hover:bg-slate-100 transition-all group text-xs border border-slate-200 shadow-sm">
+            <a
+              href="tel:+33612345678"
+              className="flex items-center gap-2 p-2 bg-white rounded-lg hover:bg-slate-100 transition-all group text-xs border border-slate-200 shadow-sm"
+            >
               <Phone className="w-4 h-4 text-purple-600 flex-shrink-0" />
-              <span className="text-slate-700 group-hover:text-slate-900 transition-colors">+33 6 12 34 56 78</span>
+              <span className="text-slate-700 group-hover:text-slate-900 transition-colors">
+                +33 6 12 34 56 78
+              </span>
             </a>
             <div className="flex items-center gap-2 p-2 bg-white rounded-lg text-xs border border-slate-200 shadow-sm">
               <MapPin className="w-4 h-4 text-pink-600 flex-shrink-0" />
@@ -138,7 +174,7 @@ export default function ImprovedSidebar() {
           {[
             { icon: Github, href: "https://github.com", label: "GitHub" },
             { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
-            { icon: Twitter, href: "https://twitter.com", label: "Twitter" }
+            { icon: Twitter, href: "https://twitter.com", label: "Twitter" },
           ].map((social, idx) => (
             <a
               key={idx}
@@ -163,18 +199,20 @@ export default function ImprovedSidebar() {
               <Send className="w-4 h-4 text-white" />
             </div>
             <h3 className="text-slate-900 font-bold text-base">
-              {currentLocale === 'fr' ? 'Envoyez un message' : 'Send a message'}
+              {currentLocale === "fr" ? "Envoyez un message" : "Send a message"}
             </h3>
           </div>
-          
+
           <div className="space-y-3">
             <div className="relative">
               <User className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
               <input
                 type="text"
                 value={formData.name}
-                onChange={(e) => setFormData({...formData, name: e.target.value})}
-                placeholder={currentLocale === 'fr' ? 'Votre nom' : 'Your name'}
+                onChange={(e) =>
+                  setFormData({ ...formData, name: e.target.value })
+                }
+                placeholder={currentLocale === "fr" ? "Votre nom" : "Your name"}
                 className="w-full pl-10 pr-3 py-2.5 rounded-xl bg-white border border-slate-200 text-slate-900 text-sm placeholder-slate-400 focus:border-red-400 focus:ring-2 focus:ring-red-100 focus:outline-none transition-all"
               />
             </div>
@@ -184,7 +222,9 @@ export default function ImprovedSidebar() {
               <input
                 type="email"
                 value={formData.email}
-                onChange={(e) => setFormData({...formData, email: e.target.value})}
+                onChange={(e) =>
+                  setFormData({ ...formData, email: e.target.value })
+                }
                 placeholder="Email"
                 className="w-full pl-10 pr-3 py-2.5 rounded-xl bg-white border border-slate-200 text-slate-900 text-sm placeholder-slate-400 focus:border-red-400 focus:ring-2 focus:ring-red-100 focus:outline-none transition-all"
               />
@@ -194,9 +234,15 @@ export default function ImprovedSidebar() {
               <MessageSquare className="absolute left-3 top-3 w-4 h-4 text-slate-400" />
               <textarea
                 value={formData.message}
-                onChange={(e) => setFormData({...formData, message: e.target.value})}
+                onChange={(e) =>
+                  setFormData({ ...formData, message: e.target.value })
+                }
                 rows={4}
-                placeholder={currentLocale === 'fr' ? 'Votre message...' : 'Your message...'}
+                placeholder={
+                  currentLocale === "fr"
+                    ? "Votre message..."
+                    : "Your message..."
+                }
                 className="w-full pl-10 pr-3 py-2.5 rounded-xl bg-white border border-slate-200 text-slate-900 text-sm placeholder-slate-400 focus:border-red-400 focus:ring-2 focus:ring-red-100 focus:outline-none resize-none transition-all"
               />
             </div>
@@ -209,16 +255,20 @@ export default function ImprovedSidebar() {
               {isSuccess ? (
                 <span className="flex items-center justify-center gap-2">
                   <CheckCircle className="w-5 h-5" />
-                  {currentLocale === 'fr' ? 'Message envoyé !' : 'Message sent!'}
+                  {currentLocale === "fr"
+                    ? "Message envoyé !"
+                    : "Message sent!"}
                 </span>
               ) : isSubmitting ? (
                 <span className="flex items-center justify-center gap-2">
                   <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                  {currentLocale === 'fr' ? 'Envoi en cours...' : 'Sending...'}
+                  {currentLocale === "fr" ? "Envoi en cours..." : "Sending..."}
                 </span>
               ) : (
                 <span className="flex items-center justify-center gap-2">
-                  {currentLocale === 'fr' ? 'Envoyer le message' : 'Send message'}
+                  {currentLocale === "fr"
+                    ? "Envoyer le message"
+                    : "Send message"}
                   <Send className="w-4 h-4" />
                 </span>
               )}

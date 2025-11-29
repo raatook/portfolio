@@ -1,7 +1,7 @@
 import { Inter } from "next/font/google";
 import React from "react";
-import "../../globals.css";
-import { Providers } from "../providers";
+import "../globals.css";
+import { Providers } from "./providers";
 import ImprovedSidebar from "@/app/components/ImprovedSidebar";
 
 const inter = Inter({
@@ -47,9 +47,9 @@ export default async function FrontLayout({
       <body className={`${inter.variable} font-sans antialiased overflow-x-hidden`}>
         <Providers locale={locale}>
           {/* Structure responsive : contenu + sidebar visible à partir de 720px */}
-          <div className="flex min-h-screen bg-slate-950">
+          <div className="relative min-h-screen bg-slate-950">
             {/* Contenu principal */}
-            <main className="flex-1 w-full min-w-0">
+            <main className="w-full min-[720px]:pr-80 lg:pr-96">
               {children}
             </main>
             

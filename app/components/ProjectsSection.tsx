@@ -111,35 +111,35 @@ export default function ProjectsSection() {
   }, [currentProject.images.length, isHovering]);
 
   return (
-    <section className="relative py-12 md:py-20 lg:py-24 bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-950 overflow-hidden px-4 sm:px-6 max-w-full" id="projects">
+    <section className="relative min-h-screen flex flex-col bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-950 overflow-hidden px-4 sm:px-6 max-w-full py-8 md:py-12" id="projects">
       {/* Background Effects */}
       <div className="absolute inset-0 opacity-30">
         <div className="absolute top-0 left-1/4 w-48 h-48 md:w-96 md:h-96 bg-indigo-500/20 rounded-full blur-3xl" />
         <div className="absolute bottom-0 right-1/4 w-48 h-48 md:w-96 md:h-96 bg-purple-500/20 rounded-full blur-3xl" />
       </div>
 
-      <div className="max-w-7xl mx-auto relative">
-        {/* Header */}
-        <div className="text-center mb-10 md:mb-16">
-          <div className="inline-flex items-center gap-2 px-3 md:px-4 py-1.5 md:py-2 rounded-full bg-indigo-500/10 border border-indigo-500/20 backdrop-blur-xl mb-4 md:mb-6">
+      <div className="max-w-7xl mx-auto relative flex flex-col w-full flex-1">
+        {/* Header - Compact */}
+        <div className="text-center mb-6 md:mb-8">
+          <div className="inline-flex items-center gap-2 px-3 md:px-4 py-1.5 md:py-2 rounded-full bg-indigo-500/10 border border-indigo-500/20 backdrop-blur-xl mb-3 md:mb-4">
             <Sparkles className="w-3 h-3 md:w-4 md:h-4 text-indigo-400" />
             <span className="text-xs md:text-sm font-semibold text-indigo-300">Projets Récents</span>
           </div>
           
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black">
             <span className="bg-gradient-to-r from-white via-indigo-200 to-purple-200 bg-clip-text text-transparent">
               Mes Réalisations
             </span>
           </h2>
         </div>
 
-        {/* Main Slide with Details */}
-        <div className="relative mb-6 md:mb-8">
-          <div className="grid lg:grid-cols-2 gap-0 lg:gap-8 bg-white/5 backdrop-blur-xl rounded-2xl md:rounded-3xl border border-white/10 overflow-hidden">
+        {/* Main Slide with Details - Flex grow */}
+        <div className="relative mb-4 md:mb-6 flex-1 flex flex-col">
+          <div className="grid lg:grid-cols-2 gap-0 lg:gap-6 bg-white/5 backdrop-blur-xl rounded-2xl md:rounded-3xl border border-white/10 overflow-hidden h-full">
             {/* Left: Image Gallery */}
-            <div className="relative">
+            <div className="relative h-64 lg:h-auto">
               <div 
-                className="relative aspect-video lg:aspect-auto lg:h-full group"
+                className="relative w-full h-full group"
                 onMouseEnter={() => setIsHovering(true)}
                 onMouseLeave={() => setIsHovering(false)}
               >
@@ -177,29 +177,29 @@ export default function ProjectsSection() {
               </div>
             </div>
 
-            {/* Right: Details */}
-            <div className="p-6 md:p-8 lg:p-10 flex flex-col justify-center">
+            {/* Right: Details - Scrollable si nécessaire */}
+            <div className="p-4 md:p-6 lg:p-8 flex flex-col overflow-y-auto max-h-[calc(100vh-20rem)] lg:max-h-none">
               {/* Title & Description */}
-              <div className="mb-4 md:mb-6">
-                <h3 className="text-2xl md:text-3xl lg:text-4xl font-black text-white mb-2 md:mb-3">
+              <div className="mb-3 md:mb-4">
+                <h3 className="text-xl md:text-2xl lg:text-3xl font-black text-white mb-2">
                   {currentProject.title}
                 </h3>
-                <p className="text-slate-300 text-sm md:text-base lg:text-lg">
+                <p className="text-slate-300 text-sm md:text-base">
                   {currentProject.description}
                 </p>
               </div>
 
-              {/* Info Grid */}
-              <div className="grid grid-cols-2 gap-2 md:gap-3 mb-4 md:mb-6">
-                <div className="p-2 md:p-3 bg-white/5 rounded-lg md:rounded-xl border border-white/10">
+              {/* Info Grid - Compact */}
+              <div className="grid grid-cols-2 gap-2 mb-3 md:mb-4">
+                <div className="p-2 md:p-3 bg-white/5 rounded-lg border border-white/10">
                   <div className="flex items-center gap-1 md:gap-2 mb-1">
                     <User className="w-3 h-3 md:w-4 md:h-4 text-blue-400" />
                     <span className="text-xs text-slate-400">Client</span>
                   </div>
-                  <p className="text-white font-semibold text-xs md:text-sm">{currentProject.client}</p>
+                  <p className="text-white font-semibold text-xs md:text-sm truncate">{currentProject.client}</p>
                 </div>
 
-                <div className="p-2 md:p-3 bg-white/5 rounded-lg md:rounded-xl border border-white/10">
+                <div className="p-2 md:p-3 bg-white/5 rounded-lg border border-white/10">
                   <div className="flex items-center gap-1 md:gap-2 mb-1">
                     <Calendar className="w-3 h-3 md:w-4 md:h-4 text-purple-400" />
                     <span className="text-xs text-slate-400">Année</span>
@@ -207,7 +207,7 @@ export default function ProjectsSection() {
                   <p className="text-white font-semibold text-xs md:text-sm">{currentProject.year}</p>
                 </div>
 
-                <div className="p-2 md:p-3 bg-white/5 rounded-lg md:rounded-xl border border-white/10">
+                <div className="p-2 md:p-3 bg-white/5 rounded-lg border border-white/10">
                   <div className="flex items-center gap-1 md:gap-2 mb-1">
                     <Clock className="w-3 h-3 md:w-4 md:h-4 text-cyan-400" />
                     <span className="text-xs text-slate-400">Durée</span>
@@ -215,7 +215,7 @@ export default function ProjectsSection() {
                   <p className="text-white font-semibold text-xs md:text-sm">{currentProject.duration}</p>
                 </div>
 
-                <div className="p-2 md:p-3 bg-white/5 rounded-lg md:rounded-xl border border-white/10">
+                <div className="p-2 md:p-3 bg-white/5 rounded-lg border border-white/10">
                   <a 
                     href={currentProject.link} 
                     target="_blank" 
@@ -228,17 +228,17 @@ export default function ProjectsSection() {
                 </div>
               </div>
 
-              {/* Technologies */}
-              <div className="mb-4 md:mb-6">
-                <div className="flex items-center gap-2 mb-2 md:mb-3">
+              {/* Technologies - Compact */}
+              <div className="mb-3 md:mb-4">
+                <div className="flex items-center gap-2 mb-2">
                   <Code2 className="w-3 h-3 md:w-4 md:h-4 text-indigo-400" />
                   <h4 className="text-white font-bold text-xs md:text-sm">Technologies</h4>
                 </div>
-                <div className="flex flex-wrap gap-1.5 md:gap-2">
+                <div className="flex flex-wrap gap-1.5">
                   {currentProject.tags.map((tag, idx) => (
                     <span
                       key={idx}
-                      className="px-2 md:px-3 py-1 rounded-lg bg-white/10 backdrop-blur-xl border border-white/20 text-white text-xs font-medium"
+                      className="px-2 py-0.5 md:px-3 md:py-1 rounded-lg bg-white/10 backdrop-blur-xl border border-white/20 text-white text-xs font-medium"
                     >
                       {tag}
                     </span>
@@ -246,24 +246,24 @@ export default function ProjectsSection() {
                 </div>
               </div>
 
-              {/* Challenge & Solution */}
-              <div className="space-y-3 md:space-y-4">
-                <div className="p-3 md:p-4 bg-orange-500/10 rounded-lg md:rounded-xl border border-orange-500/20">
-                  <div className="flex items-center gap-2 mb-1 md:mb-2">
+              {/* Challenge & Solution - Compact */}
+              <div className="space-y-2 md:space-y-3">
+                <div className="p-2 md:p-3 bg-orange-500/10 rounded-lg border border-orange-500/20">
+                  <div className="flex items-center gap-2 mb-1">
                     <Target className="w-3 h-3 md:w-4 md:h-4 text-orange-400" />
                     <h4 className="text-white font-bold text-xs md:text-sm">Challenge</h4>
                   </div>
-                  <p className="text-slate-300 text-xs md:text-sm leading-relaxed">
+                  <p className="text-slate-300 text-xs leading-relaxed line-clamp-2 md:line-clamp-none">
                     {currentProject.challenge}
                   </p>
                 </div>
 
-                <div className="p-3 md:p-4 bg-green-500/10 rounded-lg md:rounded-xl border border-green-500/20">
-                  <div className="flex items-center gap-2 mb-1 md:mb-2">
+                <div className="p-2 md:p-3 bg-green-500/10 rounded-lg border border-green-500/20">
+                  <div className="flex items-center gap-2 mb-1">
                     <Lightbulb className="w-3 h-3 md:w-4 md:h-4 text-green-400" />
                     <h4 className="text-white font-bold text-xs md:text-sm">Solution</h4>
                   </div>
-                  <p className="text-slate-300 text-xs md:text-sm leading-relaxed">
+                  <p className="text-slate-300 text-xs leading-relaxed line-clamp-2 md:line-clamp-none">
                     {currentProject.solution}
                   </p>
                 </div>
@@ -288,8 +288,8 @@ export default function ProjectsSection() {
           </button>
         </div>
 
-        {/* Project Thumbnails */}
-        <div className="flex gap-2 md:gap-4 justify-center overflow-x-auto pb-2 px-4">
+        {/* Project Thumbnails - Fixed at bottom */}
+        <div className="flex gap-2 md:gap-3 justify-center overflow-x-auto pb-2 px-2">
           {projects.map((project, idx) => (
             <button
               key={project.id}
@@ -297,9 +297,9 @@ export default function ProjectsSection() {
                 setCurrentSlide(idx);
                 setCurrentImageIndex(0);
               }}
-              className={`relative flex-shrink-0 w-16 h-16 md:w-24 md:h-24 rounded-lg md:rounded-2xl overflow-hidden transition-all ${
+              className={`relative flex-shrink-0 w-14 h-14 md:w-20 md:h-20 rounded-lg md:rounded-xl overflow-hidden transition-all ${
                 currentSlide === idx 
-                  ? 'ring-2 md:ring-4 ring-white scale-110' 
+                  ? 'ring-2 md:ring-3 ring-white scale-110' 
                   : 'opacity-50 hover:opacity-100'
               }`}
               aria-label={`Voir ${project.title}`}
@@ -312,9 +312,8 @@ export default function ProjectsSection() {
               {currentSlide === idx && (
                 <div className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-20`} />
               )}
-              {/* Badge pour indiquer le nombre d'images */}
               {project.images.length > 1 && (
-                <div className="absolute top-0.5 right-0.5 md:top-1 md:right-1 px-1 md:px-1.5 py-0.5 bg-black/70 rounded text-white text-xs font-bold">
+                <div className="absolute top-0.5 right-0.5 md:top-1 md:right-1 px-1 py-0.5 bg-black/70 rounded text-white text-xs font-bold">
                   {project.images.length}
                 </div>
               )}

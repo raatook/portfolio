@@ -126,7 +126,7 @@ export default function HeroWithValuesSection() {
   ];
 
   return (
-    <section className="relative min-h-screen bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-950 overflow-hidden flex items-center pt-20 px-4 sm:px-6" id="home">
+    <section className="relative min-h-screen bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-950 overflow-hidden flex items-center px-4 sm:px-6 max-w-full py-8 md:py-12" id="home">
       {/* Animated Background */}
       <div className="absolute inset-0 opacity-20">
         <div 
@@ -139,29 +139,29 @@ export default function HeroWithValuesSection() {
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f12_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f12_1px,transparent_1px)] bg-[size:32px_32px]" />
       </div>
 
-      {/* Floating Orbs */}
-      <div className="absolute top-20 left-10 w-32 h-32 md:w-64 md:h-64 bg-indigo-500/20 rounded-full blur-3xl animate-pulse" />
-      <div className="absolute bottom-20 right-10 w-40 h-40 md:w-80 md:h-80 bg-purple-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+      {/* Floating Orbs - ajustés pour ne pas déborder */}
+      <div className="absolute top-20 left-4 sm:left-10 w-32 h-32 md:w-64 md:h-64 bg-indigo-500/20 rounded-full blur-3xl animate-pulse" />
+      <div className="absolute bottom-20 right-4 sm:right-10 w-40 h-40 md:w-80 md:h-80 bg-purple-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
 
-      <div className="relative max-w-7xl mx-auto py-8 md:py-12 w-full">
-        <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
+      <div className="relative max-w-7xl mx-auto w-full">
+        <div className="grid lg:grid-cols-2 gap-6 md:gap-8 items-center">
           {/* Left: Hero Content with Logo */}
           <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             {/* Logo RTook */}
-            <div className="mb-6 md:mb-8 flex justify-center lg:justify-start">
+            <div className="mb-4 md:mb-6 flex justify-center lg:justify-start">
               <div className="relative group">
                 <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full blur-2xl opacity-30 group-hover:opacity-50 transition-opacity" />
-                <RTookLogo className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 relative animate-float" />
+                <RTookLogo className="w-16 h-16 sm:w-20 sm:h-20 relative animate-float" />
               </div>
             </div>
 
-            <div className="inline-flex items-center gap-2 px-3 md:px-4 py-1.5 md:py-2 rounded-full bg-indigo-500/10 border border-indigo-500/20 backdrop-blur-xl mb-4 md:mb-6">
+            <div className="inline-flex items-center gap-2 px-3 md:px-4 py-1.5 md:py-2 rounded-full bg-indigo-500/10 border border-indigo-500/20 backdrop-blur-xl mb-3 md:mb-4">
               <Sparkles className="w-3 h-3 md:w-4 md:h-4 text-indigo-400 animate-pulse" />
               <span className="text-xs md:text-sm font-medium text-indigo-300">Développeur Full Stack</span>
               <div className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-green-400 animate-pulse" />
             </div>
 
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black mb-4 md:mb-6 leading-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-3 md:mb-4 leading-tight">
               <span className="inline-block bg-gradient-to-r from-white via-indigo-200 to-purple-200 bg-clip-text text-transparent">
                 Créons l'Avenir
               </span>
@@ -171,16 +171,16 @@ export default function HeroWithValuesSection() {
               </span>
             </h1>
 
-            <p className="text-base sm:text-lg md:text-xl text-slate-300 mb-6 md:mb-8 leading-relaxed">
+            <p className="text-sm sm:text-base md:text-lg text-slate-300 mb-4 md:mb-6 leading-relaxed">
               Expert en développement <span className="text-indigo-400 font-semibold">Web</span>, <span className="text-purple-400 font-semibold">Data</span> & <span className="text-pink-400 font-semibold">IA</span>. Je transforme vos idées en solutions digitales innovantes et performantes.
             </p>
 
             {/* Stats compact */}
-            <div className="grid grid-cols-3 gap-3 md:gap-4 mb-6 md:mb-8">
+            <div className="grid grid-cols-3 gap-2 md:gap-3">
               {stats.map((stat, idx) => (
-                <div key={idx} className="bg-white/5 backdrop-blur-xl rounded-lg md:rounded-xl p-3 md:p-4 border border-white/10">
-                  <div className="text-xl md:text-2xl mb-0.5 md:mb-1">{stat.emoji}</div>
-                  <div className="text-xl md:text-2xl font-black bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
+                <div key={idx} className="bg-white/5 backdrop-blur-xl rounded-lg p-2 md:p-3 border border-white/10">
+                  <div className="text-lg md:text-xl mb-0.5">{stat.emoji}</div>
+                  <div className="text-lg md:text-xl font-black bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
                     {stat.value}
                   </div>
                   <div className="text-slate-400 text-xs font-medium">{stat.label}</div>
@@ -190,7 +190,7 @@ export default function HeroWithValuesSection() {
           </div>
 
           {/* Right: Added Values Cards */}
-          <div className="grid grid-cols-2 sm:grid-cols-2 gap-3 md:gap-4">
+          <div className="grid grid-cols-2 gap-2 md:gap-3">
             {addedValues.map((value, idx) => (
               <div
                 key={idx}
@@ -203,27 +203,27 @@ export default function HeroWithValuesSection() {
                   transform: isVisible ? 'translateY(0)' : 'translateY(20px)'
                 }}
               >
-                <div className="relative h-full bg-white/5 backdrop-blur-xl rounded-xl md:rounded-2xl p-4 md:p-6 border border-white/10 hover:border-white/20 transition-all duration-500 overflow-hidden">
+                <div className="relative h-full bg-white/5 backdrop-blur-xl rounded-xl p-3 md:p-4 border border-white/10 hover:border-white/20 transition-all duration-500 overflow-hidden">
                   {activeValue === idx && (
                     <div className={`absolute inset-0 bg-gradient-to-br ${value.color} opacity-10`} />
                   )}
 
-                  <div className="absolute top-2 right-2 md:top-3 md:right-3 w-6 h-6 md:w-8 md:h-8 rounded-full bg-white/5 flex items-center justify-center">
+                  <div className="absolute top-2 right-2 w-6 h-6 md:w-8 md:h-8 rounded-full bg-white/5 flex items-center justify-center">
                     <span className="text-white/40 font-bold text-xs">
                       {String(idx + 1).padStart(2, '0')}
                     </span>
                   </div>
 
                   <div className="relative">
-                    <div className={`w-10 h-10 md:w-12 md:h-12 rounded-lg md:rounded-xl bg-gradient-to-br ${value.color} flex items-center justify-center mb-3 md:mb-4 transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 shadow-lg`}>
-                      <value.icon className="w-5 h-5 md:w-6 md:h-6 text-white" />
+                    <div className={`w-8 h-8 md:w-10 md:h-10 rounded-lg bg-gradient-to-br ${value.color} flex items-center justify-center mb-2 md:mb-3 transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 shadow-lg`}>
+                      <value.icon className="w-4 h-4 md:w-5 md:h-5 text-white" />
                     </div>
 
-                    <h3 className="text-sm md:text-base font-bold text-white mb-1 md:mb-2 group-hover:text-indigo-200 transition-colors">
+                    <h3 className="text-xs md:text-sm font-bold text-white mb-1 group-hover:text-indigo-200 transition-colors">
                       {value.title}
                     </h3>
 
-                    <p className="text-slate-400 text-xs md:text-sm leading-relaxed group-hover:text-slate-300 transition-colors">
+                    <p className="text-slate-400 text-xs leading-relaxed group-hover:text-slate-300 transition-colors">
                       {value.description}
                     </p>
                   </div>
