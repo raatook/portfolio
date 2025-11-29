@@ -125,7 +125,6 @@ export default function AddedValueSection() {
                     <div className={`w-6 h-6 rounded-full bg-gradient-to-br ${value.color} flex items-center justify-center`}>
                       <Check className="w-4 h-4 text-white" />
                     </div>
-                    <span className="text-slate-500 text-xs font-medium">Garanti</span>
                   </div>
                 </div>
 

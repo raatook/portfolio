@@ -62,7 +62,7 @@ export default function ServicesExpertiseSection() {
   // Stack technique avec icônes
   const techStack = [
     { name: "React", icon: "fa-brands fa-react", color: "#61DAFB" },
-    { name: "Next.js", icon: "fa-solid fa-n", color: "#000000" },
+    { name: "Next.js", icon: "fa-solid fa-n", color: "#FFFFFF" },
     { name: "Vue.js", icon: "fa-brands fa-vuejs", color: "#4FC08D" },
     { name: "Node.js", icon: "fa-brands fa-node-js", color: "#339933" },
     { name: "Python", icon: "fa-brands fa-python", color: "#3776AB" },
@@ -88,44 +88,47 @@ export default function ServicesExpertiseSection() {
   }, [techStack.length]);
 
   return (
-    <section className="relative py-24 bg-gradient-to-b from-white via-slate-50 to-white overflow-hidden">
+    <section className="relative py-24 bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-950 overflow-hidden" id="services">
       {/* Background Elements */}
-      <div className="absolute inset-0">
-        <div className="absolute top-20 right-10 w-96 h-96 bg-indigo-200/20 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 left-10 w-96 h-96 bg-purple-200/20 rounded-full blur-3xl" />
+      <div className="absolute inset-0 opacity-20">
+        <div className="absolute top-20 right-10 w-96 h-96 bg-indigo-500/20 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-20 left-10 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
       </div>
+
+      {/* Grid Pattern */}
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:64px_64px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,black,transparent)]" />
 
       <div className="max-w-7xl mx-auto px-6 relative">
         {/* Header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-100 mb-6">
-            <Sparkles className="w-4 h-4 text-indigo-600" />
-            <span className="text-sm font-semibold text-indigo-700">Services & Expertise</span>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-500/10 border border-indigo-500/20 backdrop-blur-xl mb-6">
+            <Sparkles className="w-4 h-4 text-indigo-400" />
+            <span className="text-sm font-semibold text-indigo-300">Services & Expertise</span>
           </div>
 
           <h2 className="text-5xl md:text-6xl font-black mb-6 leading-tight">
-            <span className="bg-gradient-to-r from-slate-900 via-indigo-800 to-purple-800 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-white via-indigo-200 to-purple-200 bg-clip-text text-transparent">
               Ce que je propose
             </span>
           </h2>
 
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-slate-400 max-w-3xl mx-auto leading-relaxed">
             Des solutions complètes pour tous vos besoins digitaux
           </p>
         </div>
 
         {/* Services Grid - Compact 3x2 */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-16">
           {services.map((service, index) => (
             <div
               key={service.id}
               onMouseEnter={() => setActiveService(index)}
               className="group relative"
             >
-              <div className={`relative h-full p-6 rounded-2xl border-2 transition-all duration-500 cursor-pointer ${
+              <div className={`relative h-full p-6 rounded-2xl border-2 transition-all duration-500 cursor-pointer bg-white/5 backdrop-blur-xl ${
                 activeService === index
-                  ? 'border-transparent bg-white shadow-2xl scale-105'
-                  : 'border-slate-200 bg-white hover:border-slate-300'
+                  ? 'border-white/20 shadow-2xl scale-105'
+                  : 'border-white/10 hover:border-white/20'
               }`}>
                 {/* Gradient glow on hover */}
                 {activeService === index && (
@@ -140,10 +143,10 @@ export default function ServicesExpertiseSection() {
                 </div>
 
                 {/* Content */}
-                <h3 className="text-lg font-bold text-slate-900 mb-2">
+                <h3 className="text-lg font-bold text-white mb-2">
                   {service.title}
                 </h3>
-                <p className="text-slate-600 text-sm leading-relaxed">
+                <p className="text-slate-400 text-sm leading-relaxed">
                   {service.description}
                 </p>
 
@@ -158,11 +161,20 @@ export default function ServicesExpertiseSection() {
 
         {/* Tech Stack Showcase */}
         <div className="relative">
+          {/* Header */}
+          <div className="text-center mb-8">
+            <div className="flex items-center justify-center gap-2 mb-4">
+              <Code2 className="w-5 h-5 text-indigo-400" />
+              <h3 className="text-2xl font-bold text-white">Stack Technique</h3>
+            </div>
+            <p className="text-slate-400">Technologies que je maîtrise</p>
+          </div>
+
           {/* Infinite scroll carousel */}
           <div className="relative overflow-hidden">
             {/* Gradient masks */}
-            <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-white to-transparent z-10" />
-            <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-white to-transparent z-10" />
+            <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-slate-950 to-transparent z-10" />
+            <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-slate-950 to-transparent z-10" />
 
             {/* Scrolling container */}
             <div className="flex gap-6 animate-scroll py-8">
@@ -170,28 +182,20 @@ export default function ServicesExpertiseSection() {
               {[...techStack, ...techStack].map((tech, index) => (
                 <div
                   key={index}
-                  className="group flex-shrink-0 w-20 h-20 bg-white rounded-2xl border-2 border-slate-200 hover:border-indigo-400 flex flex-col items-center justify-center gap-2 transition-all hover:scale-110 hover:shadow-xl cursor-pointer"
+                  className="group flex-shrink-0 w-20 h-20 bg-white/5 backdrop-blur-xl rounded-2xl border-2 border-white/10 hover:border-indigo-400 flex flex-col items-center justify-center gap-2 transition-all hover:scale-110 hover:shadow-xl cursor-pointer"
                   title={tech.name}
                 >
                   <i 
                     className={`${tech.icon} text-3xl transition-colors`}
                     style={{ color: tech.color }}
                   />
-                  <span className="text-xs font-semibold text-slate-600 group-hover:text-slate-900 transition-colors text-center px-1">
+                  <span className="text-xs font-semibold text-slate-400 group-hover:text-white transition-colors text-center px-1">
                     {tech.name}
                   </span>
                 </div>
               ))}
             </div>
           </div>
-        </div>
-
-        {/* CTA Button */}
-        <div className="text-center mt-16">
-          <button className="group inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-bold rounded-2xl hover:shadow-[0_0_40px_rgba(99,102,241,0.6)] transition-all hover:scale-105">
-            Discutons de votre projet
-            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-          </button>
         </div>
       </div>
 

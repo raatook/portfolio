@@ -1,9 +1,9 @@
 // front/app/[locale]/(front)/layout.tsx
-import Navbar from "@/app/components/front/Navbar";
 import { Inter } from "next/font/google";
 import React from "react";
 import "../../globals.css";
 import { Providers } from "../providers";
+import ImprovedSidebar from "@/app/components/ImprovedSidebar";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -11,9 +11,8 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
-// ✅ Metadata complet avec favicon et Font Awesome
 export const metadata: any = {
-  title: "Vitasoft - Développeur Full Stack",
+  title: "RTook - Développeur Full Stack",
   description:
     "Expert en développement web, data et IA. Créons ensemble des solutions innovantes.",
   icons: {
@@ -21,16 +20,6 @@ export const metadata: any = {
     shortcut: "/logo.png",
     apple: "/logo.png",
   },
-  stylesheets: [
-    {
-      href: "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css",
-      rel: "stylesheet",
-      integrity:
-        "sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==",
-      crossOrigin: "anonymous",
-      referrerPolicy: "no-referrer",
-    },
-  ],
 };
 
 export default async function FrontLayout({
@@ -57,9 +46,15 @@ export default async function FrontLayout({
       </head>
       <body className={`${inter.variable} font-sans antialiased`}>
         <Providers locale={locale}>
-          <div className="flex flex-col min-h-screen bg-white">
-            <Navbar />
-            <main className="flex-grow">{children}</main>
+          {/* Structure en colonnes : contenu principal + sidebar */}
+          <div className="flex min-h-screen bg-white">
+            {/* Contenu principal */}
+            <main className="flex-1">
+              {children}
+            </main>
+            
+            {/* Sidebar - visible uniquement sur grands écrans */}
+            <ImprovedSidebar />
           </div>
         </Providers>
       </body>

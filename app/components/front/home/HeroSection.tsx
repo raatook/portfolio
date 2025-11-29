@@ -68,24 +68,6 @@ export default function HeroSection() {
             Développeur passionné spécialisé en <span className="text-indigo-400 font-semibold">Web</span>, <span className="text-purple-400 font-semibold">Data</span> & <span className="text-pink-400 font-semibold">IA</span>
           </p>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-20">
-            <button className="group relative px-8 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold rounded-2xl overflow-hidden transition-all hover:shadow-[0_0_40px_rgba(99,102,241,0.6)] hover:scale-105">
-              <span className="relative z-10 flex items-center justify-center gap-2">
-                Discutons de votre projet
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </span>
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 opacity-0 group-hover:opacity-100 transition-opacity" />
-            </button>
-
-            <button className="group px-8 py-4 bg-white/5 backdrop-blur-xl text-white font-semibold rounded-2xl border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all">
-              <span className="flex items-center justify-center gap-2">
-                <Code2 className="w-5 h-5" />
-                Voir mes projets
-              </span>
-            </button>
-          </div>
-
           {/* Compact Stats Grid */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
             {stats.map((stat, index) => (
