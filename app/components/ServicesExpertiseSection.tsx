@@ -1,75 +1,20 @@
+// app/components/ServicesExpertiseSection.tsx
 "use client";
 
 import { useState, useEffect } from "react";
 import { Sparkles, Code2 } from "lucide-react";
+import { Service, TechStack } from "../lib/data/portfolio";
 
-export default function ServicesExpertiseSection() {
+export default function ServicesExpertiseSection({
+  services,
+  techStack
+}: {
+  techStack: TechStack[];
+  services: Service[];
+}) {
   const [activeService, setActiveService] = useState(0);
   const [scrollPosition, setScrollPosition] = useState(0);
 
-  const services = [
-    {
-      id: 1,
-      icon: "fa-code",
-      title: "Développement Web",
-      description: "Applications web modernes, performantes et responsive",
-      color: "from-blue-500 to-cyan-500",
-      bgColor: "bg-blue-500/10",
-    },
-    {
-      id: 2,
-      icon: "fa-mobile-alt",
-      title: "Développement Mobile",
-      description: "Apps natives et cross-platform iOS & Android",
-      color: "from-green-500 to-emerald-500",
-      bgColor: "bg-green-500/10",
-    },
-    {
-      id: 3,
-      icon: "fa-database",
-      title: "Data Engineering",
-      description: "Architecture data, ETL, analyse de données",
-      color: "from-purple-500 to-pink-500",
-      bgColor: "bg-purple-500/10",
-    },
-    {
-      id: 4,
-      icon: "fa-brain",
-      title: "Intelligence Artificielle",
-      description: "Solutions IA, Machine Learning, NLP",
-      color: "from-orange-500 to-red-500",
-      bgColor: "bg-orange-500/10",
-    },
-    {
-      id: 5,
-      icon: "fa-rocket",
-      title: "Déploiement & DevOps",
-      description: "CI/CD, containerisation, cloud",
-      color: "from-indigo-500 to-purple-500",
-      bgColor: "bg-indigo-500/10",
-    },
-    {
-      id: 6,
-      icon: "fa-tools",
-      title: "Maintenance & Support",
-      description: "Monitoring, debugging, évolutions",
-      color: "from-yellow-500 to-orange-500",
-      bgColor: "bg-yellow-500/10",
-    },
-  ];
-
-  const techStack = [
-    { name: "React", icon: "fa-brands fa-react", color: "#61DAFB" },
-    { name: "Next.js", icon: "fa-solid fa-n", color: "#FFFFFF" },
-    { name: "Vue.js", icon: "fa-brands fa-vuejs", color: "#4FC08D" },
-    { name: "Node.js", icon: "fa-brands fa-node-js", color: "#339933" },
-    { name: "Python", icon: "fa-brands fa-python", color: "#3776AB" },
-    { name: "TypeScript", icon: "fa-solid fa-code", color: "#3178C6" },
-    { name: "Docker", icon: "fa-brands fa-docker", color: "#2496ED" },
-    { name: "AWS", icon: "fa-brands fa-aws", color: "#FF9900" },
-    { name: "MongoDB", icon: "fa-solid fa-database", color: "#47A248" },
-    { name: "PostgreSQL", icon: "fa-solid fa-database", color: "#4169E1" },
-  ];
 
   // Auto-scroll (carrousel)
   useEffect(() => {

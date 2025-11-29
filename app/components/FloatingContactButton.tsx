@@ -1,17 +1,35 @@
+//app/components/FloatingContactButton.tsx
 "use client";
 
 import { useState } from "react";
-import { MessageCircle, X, Mail, User, Send, CheckCircle, MessageSquare } from "lucide-react";
+import {
+  MessageCircle,
+  X,
+  Mail,
+  User,
+  Send,
+  CheckCircle,
+  MessageSquare,
+  Phone,
+  MapPin,
+  Github,
+  Linkedin,
+  Twitter,
+} from "lucide-react";
 
 export default function FloatingContactButton() {
   const [isOpen, setIsOpen] = useState(false);
-  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
 
   const handleSubmit = async () => {
     setIsSubmitting(true);
-    await new Promise(resolve => setTimeout(resolve, 1500));
+    await new Promise((resolve) => setTimeout(resolve, 1500));
     setIsSubmitting(false);
     setIsSuccess(true);
     setFormData({ name: "", email: "", message: "" });
@@ -26,7 +44,7 @@ export default function FloatingContactButton() {
       {/* Floating Button - visible uniquement < 720px */}
       <button
         onClick={() => setIsOpen(true)}
-        className="min-[720px]:hidden fixed bottom-6 right-6 w-14 h-14 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full shadow-2xl flex items-center justify-center text-white z-50 hover:scale-110 transition-transform"
+        className="min-[720px]:hidden fixed bottom-6 right-6 w-14 h-14 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full shadow-2xl flex items-center justify-center text-white z-50 hover:scale-110 transition-transform animate-pulse-button"
         aria-label="Ouvrir le formulaire de contact"
       >
         <MessageCircle className="w-6 h-6" />
@@ -37,13 +55,13 @@ export default function FloatingContactButton() {
       {isOpen && (
         <div className="min-[720px]:hidden fixed inset-0 z-50 flex items-end sm:items-center justify-center p-4 sm:p-6">
           {/* Backdrop */}
-          <div 
+          <div
             className="absolute inset-0 bg-black/60 backdrop-blur-sm"
             onClick={() => setIsOpen(false)}
           />
 
           {/* Modal Content */}
-          <div className="relative bg-slate-900/95 backdrop-blur-xl rounded-t-3xl sm:rounded-3xl border border-white/10 w-full max-w-md shadow-2xl animate-slideUp">
+          <div className="relative bg-slate-900/95 backdrop-blur-xl rounded-t-3xl sm:rounded-3xl border border-white/10 w-full max-w-md shadow-2xl animate-slideUp overflow-hidden">
             {/* Header */}
             <div className="flex items-center justify-between p-6 border-b border-white/10">
               <div className="flex items-center gap-3">
@@ -68,7 +86,9 @@ export default function FloatingContactButton() {
                 <input
                   type="text"
                   value={formData.name}
-                  onChange={(e) => setFormData({...formData, name: e.target.value})}
+                  onChange={(e) =>
+                    setFormData({ ...formData, name: e.target.value })
+                  }
                   placeholder="Votre nom"
                   className="w-full pl-11 pr-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-slate-500 focus:border-indigo-500 focus:outline-none transition-colors"
                 />
@@ -79,7 +99,9 @@ export default function FloatingContactButton() {
                 <input
                   type="email"
                   value={formData.email}
-                  onChange={(e) => setFormData({...formData, email: e.target.value})}
+                  onChange={(e) =>
+                    setFormData({ ...formData, email: e.target.value })
+                  }
                   placeholder="Votre email"
                   className="w-full pl-11 pr-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-slate-500 focus:border-indigo-500 focus:outline-none transition-colors"
                 />
@@ -89,7 +111,9 @@ export default function FloatingContactButton() {
                 <MessageSquare className="absolute left-3 top-3 w-5 h-5 text-slate-500" />
                 <textarea
                   value={formData.message}
-                  onChange={(e) => setFormData({...formData, message: e.target.value})}
+                  onChange={(e) =>
+                    setFormData({ ...formData, message: e.target.value })
+                  }
                   rows={4}
                   placeholder="Votre message..."
                   className="w-full pl-11 pr-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-slate-500 focus:border-indigo-500 focus:outline-none resize-none transition-colors"
@@ -122,6 +146,50 @@ export default function FloatingContactButton() {
               <p className="text-center text-xs text-slate-400">
                 Je vous répondrai dans les plus brefs délais
               </p>
+
+              {/* Contact Infos */}
+              <div className="mt-4 space-y-2 border-t border-white/10 pt-4">
+                <div className="flex items-center gap-2 text-white text-sm">
+                  <Mail className="w-4 h-4 text-indigo-400" />
+                  <span>contact@exemple.com</span>
+                </div>
+                <div className="flex items-center gap-2 text-white text-sm">
+                  <Phone className="w-4 h-4 text-purple-400" />
+                  <span>+33 6 12 34 56 78</span>
+                </div>
+                <div className="flex items-center gap-2 text-white text-sm">
+                  <MapPin className="w-4 h-4 text-pink-400" />
+                  <span>Paris, France</span>
+                </div>
+              </div>
+
+              {/* Social Links */}
+              <div className="mt-4 flex gap-3 justify-center">
+                {[
+                  { icon: Github, href: "https://github.com", label: "GitHub" },
+                  {
+                    icon: Linkedin,
+                    href: "https://linkedin.com",
+                    label: "LinkedIn",
+                  },
+                  {
+                    icon: Twitter,
+                    href: "https://twitter.com",
+                    label: "Twitter",
+                  },
+                ].map((social, idx) => (
+                  <a
+                    key={idx}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center hover:bg-white/10 transition-colors"
+                    aria-label={social.label}
+                  >
+                    <social.icon className="w-5 h-5 text-white" />
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -140,6 +208,23 @@ export default function FloatingContactButton() {
         }
         .animate-slideUp {
           animation: slideUp 0.3s ease-out;
+        }
+        @keyframes pulse-button {
+          0% {
+            transform: scale(1);
+            opacity: 1;
+          }
+          50% {
+            transform: scale(1.15);
+            opacity: 0.7;
+          }
+          100% {
+            transform: scale(1);
+            opacity: 1;
+          }
+        }
+        .animate-pulse-button {
+          animation: pulse-button 1.2s infinite;
         }
       `}</style>
     </>

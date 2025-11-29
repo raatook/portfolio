@@ -1,3 +1,4 @@
+//app/components/ImprovedSidebar.tsx
 "use client";
 
 import { useState, useEffect } from "react";
@@ -27,7 +28,6 @@ export default function ImprovedSidebar() {
   const [isSuccess, setIsSuccess] = useState(false);
 
   // Hooks i18n
-  const changeLocale = useChangeLocale();
   const currentLocale = useCurrentLocale();
 
   useEffect(() => {
@@ -83,94 +83,77 @@ export default function ImprovedSidebar() {
   z-50
 "
     >
-      <div className="p-6 space-y-4">
+      <div className="space-y-4">
         {/* Navigation Menu - Compact */}
-        <div>
-          <h3 className="text-slate-900 font-semibold mb-2 text-sm flex items-center gap-2">
-            <span className="w-1.5 h-1.5 bg-indigo-500 rounded-full animate-pulse" />
-            Navigation
-          </h3>
-          <div className="flex gap-2">
-            {navItems.map((item) => (
+        {/* Navigation Menu - Icons only */}
+        <div className="flex justify-around w-full mb-4 mt-2">
+          {navItems.map((item) => {
+            // Choix des icônes selon l'id
+            let IconComponent;
+            switch (item.id) {
+              case "home":
+                IconComponent = User; // tu peux remplacer par une icône "home"
+                break;
+              case "services":
+                IconComponent = Globe; // exemple pour services
+                break;
+              case "projects":
+                IconComponent = CheckCircle; // exemple pour projects
+                break;
+              default:
+                IconComponent = User;
+            }
+
+            return (
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className={`flex-1 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
+                className={`flex-1 p-3 rounded-lg transition-all flex justify-center items-center ${
                   activeSection === item.id
                     ? "bg-indigo-600 text-white shadow-md"
                     : "text-slate-600 bg-slate-100 hover:bg-slate-200 hover:text-slate-900"
                 }`}
               >
-                {item.label[currentLocale as keyof typeof item.label]}
+                <IconComponent className="w-5 h-5" />
               </button>
-            ))}
-          </div>
-        </div>
-
-        {/* Language Switcher - Compact */}
-        <div>
-          <h3 className="text-slate-900 font-semibold mb-2 text-sm flex items-center gap-2">
-            <Globe className="w-3.5 h-3.5 text-indigo-600" />
-            {currentLocale === "fr" ? "Langue" : "Language"}
-          </h3>
-          <div className="flex gap-2">
-            <button
-              onClick={() => changeLocale("fr")}
-              className={`flex-1 px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
-                currentLocale === "fr"
-                  ? "bg-indigo-600 text-white shadow-md"
-                  : "bg-slate-100 text-slate-600 hover:bg-slate-200 hover:text-slate-900"
-              }`}
-            >
-              🇫🇷 FR
-            </button>
-            <button
-              onClick={() => changeLocale("en")}
-              className={`flex-1 px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
-                currentLocale === "en"
-                  ? "bg-indigo-600 text-white shadow-md"
-                  : "bg-slate-100 text-slate-600 hover:bg-slate-200 hover:text-slate-900"
-              }`}
-            >
-              🇬🇧 EN
-            </button>
-          </div>
+            );
+          })}
         </div>
 
         {/* Contact Info - Ultra Compact */}
-        <div>
+        <div className="p-4 space-y-3">
           <h3 className="text-slate-900 font-semibold mb-2 text-sm flex items-center gap-2">
-            <span className="w-1.5 h-1.5 bg-purple-500 rounded-full animate-pulse" />
-            Contact
+            <span className="w-2 h-2 bg-purple-500 rounded-full animate-pulse" />
+            {currentLocale === "fr" ? "Contactez-moi" : "Contact Me"}
           </h3>
           <div className="space-y-2">
             <a
               href="mailto:contact@exemple.com"
-              className="flex items-center gap-2 p-2 bg-white rounded-lg hover:bg-slate-100 transition-all group text-xs border border-slate-200 shadow-sm"
+              className="flex items-center gap-3 p-3 rounded-xl bg-gradient-to-r from-indigo-100 via-indigo-50 to-indigo-100 shadow-md hover:scale-105 hover:shadow-xl transition-all"
             >
-              <Mail className="w-4 h-4 text-indigo-600 flex-shrink-0" />
-              <span className="text-slate-700 group-hover:text-slate-900 transition-colors truncate">
+              <Mail className="w-5 h-5 text-indigo-600 flex-shrink-0" />
+              <span className="text-slate-900 font-medium truncate">
                 contact@exemple.com
               </span>
             </a>
             <a
               href="tel:+33612345678"
-              className="flex items-center gap-2 p-2 bg-white rounded-lg hover:bg-slate-100 transition-all group text-xs border border-slate-200 shadow-sm"
+              className="flex items-center gap-3 p-3 rounded-xl bg-gradient-to-r from-purple-100 via-purple-50 to-purple-100 shadow-md hover:scale-105 hover:shadow-xl transition-all"
             >
-              <Phone className="w-4 h-4 text-purple-600 flex-shrink-0" />
-              <span className="text-slate-700 group-hover:text-slate-900 transition-colors">
+              <Phone className="w-5 h-5 text-purple-600 flex-shrink-0" />
+              <span className="text-slate-900 font-medium">
                 +33 6 12 34 56 78
               </span>
             </a>
-            <div className="flex items-center gap-2 p-2 bg-white rounded-lg text-xs border border-slate-200 shadow-sm">
-              <MapPin className="w-4 h-4 text-pink-600 flex-shrink-0" />
-              <span className="text-slate-700">Paris, France</span>
+            <div className="flex items-center gap-3 p-3 rounded-xl bg-gradient-to-r from-pink-100 via-pink-50 to-pink-100 shadow-md hover:scale-105 hover:shadow-xl transition-all">
+              <MapPin className="w-5 h-5 text-pink-600 flex-shrink-0" />
+              <span className="text-slate-900 font-medium">Paris, France</span>
             </div>
           </div>
         </div>
 
         {/* Social Links - Compact */}
-        <div className="flex gap-2 justify-center">
+        <div className="flex gap-2 justify-center p-4">
           {[
             { icon: Github, href: "https://github.com", label: "GitHub" },
             { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
@@ -193,7 +176,7 @@ export default function ImprovedSidebar() {
         <div className="h-px bg-gradient-to-r from-transparent via-slate-300 to-transparent my-2" />
 
         {/* Contact Form - Highlighted */}
-        <div className="relative bg-gradient-to-br from-white via-red-50 to-orange-50 rounded-2xl p-5 border-2 border-red-300 shadow-2xl">
+        <div className="relative bg-gradient-to-br from-white via-red-50 to-orange-50 rounded-2xl p-5 border-2 border-red-300 shadow-2xl animate-bounce-slow">
           <div className="flex items-center gap-2 mb-4">
             <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-red-500 to-orange-500 flex items-center justify-center shadow-lg">
               <Send className="w-4 h-4 text-white" />
@@ -273,6 +256,11 @@ export default function ImprovedSidebar() {
                 </span>
               )}
             </button>
+            <p className="mt-3 text-center text-sm text-slate-500 italic">
+              {currentLocale === "fr"
+                ? "Parlez-moi de votre projet !"
+                : "Tell me about your project!"}
+            </p>
           </div>
 
           {/* Decorative elements */}
