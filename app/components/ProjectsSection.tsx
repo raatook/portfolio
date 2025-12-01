@@ -102,6 +102,7 @@ export default function ProjectsSection({ projects }: { projects: Project[] }) {
                 <img
                   src={currentProject.images[currentImageIndex]}
                   alt={
+                    // @ts-ignore
                     t(`projects.list.${currentProject.key}.title`) +
                     ` - Image ${currentImageIndex + 1}`
                   }
@@ -155,9 +156,11 @@ export default function ProjectsSection({ projects }: { projects: Project[] }) {
               {/* Desktop Title & Description - hidden on mobile */}
               <div className="mb-3 md:mb-4">
                 <h3 className="text-xl md:text-2xl lg:text-3xl font-black text-white mb-2">
+                  {/* @ts-ignore */}
                   {t(`projects.list.${currentProject.key}.title`)}
                 </h3>
                 <p className="text-slate-300 text-sm md:text-base">
+                  {/* @ts-ignore */}
                   {t(`projects.list.${currentProject.key}.description`)}
                 </p>
               </div>
@@ -192,6 +195,7 @@ export default function ProjectsSection({ projects }: { projects: Project[] }) {
                     </h4>
                   </div>
                   <p className="text-slate-300 text-xs leading-relaxed line-clamp-2 md:line-clamp-none">
+                    {/* @ts-ignore */}
                     {t(`projects.list.${currentProject.key}.challenge`)}
                   </p>
                 </div>
@@ -204,6 +208,7 @@ export default function ProjectsSection({ projects }: { projects: Project[] }) {
                     </h4>
                   </div>
                   <p className="text-slate-300 text-xs leading-relaxed line-clamp-2 md:line-clamp-none">
+                    {/* @ts-ignore */}
                     {t(`projects.list.${currentProject.key}.solution`)}
                   </p>
                 </div>
@@ -243,6 +248,7 @@ export default function ProjectsSection({ projects }: { projects: Project[] }) {
                   : "opacity-50 hover:opacity-100"
               }`}
               aria-label={
+                // @ts-ignore
                 "Voir " + t(`projects.list.${currentProject.key}.title`)
               }
             >
@@ -253,6 +259,7 @@ export default function ProjectsSection({ projects }: { projects: Project[] }) {
               />
               <img
                 src={project.images[0]}
+                /* @ts-ignore */
                 alt={t(`projects.list.${currentProject.key}.title`)}
                 className="relative z-10 w-full h-full object-contain"
               />

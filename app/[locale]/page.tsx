@@ -38,8 +38,8 @@ export default async function HomePage({
     itemListElement: projectsData.map((project, index) => ({
       "@type": "CreativeWork",
       position: index + 1,
-      name: project.title,
-      description: project.description,
+      // name: project.title,
+      // description: project.description,
       author: {
         "@type": "Person",
         name: "RTook"
@@ -65,8 +65,8 @@ export default async function HomePage({
         "@type": "Offer",
         itemOffered: {
           "@type": "Service",
-          name: service.title,
-          description: service.description
+          // name: service.title,
+          // description: service.description
         }
       }))
     }

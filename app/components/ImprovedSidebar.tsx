@@ -132,7 +132,7 @@ export default function ImprovedSidebar() {
               >
                 <IconComponent className="w-5 h-5" />
                 <span className="text-[10px] font-medium">
-                  {item.label[currentLocale]}
+                  {item.label[currentLocale as keyof typeof item.label] ?? item.label.en}
                 </span>
               </button>
             );

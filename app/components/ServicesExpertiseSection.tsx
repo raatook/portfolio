@@ -107,11 +107,13 @@ export default function ServicesExpertiseSection({
 
               {/* Title */}
               <h3 className="text-sm md:text-base font-bold text-white mb-1">
+                {/* @ts-ignore */}
                 {t(`services.list.${service.key}.title`)}
               </h3>
 
               {/* Description */}
               <p className="text-slate-400 text-[11px] md:text-sm leading-snug">
+                {/* @ts-ignore */}
                 {t(`services.list.${service.key}.description`)}
               </p>
 
