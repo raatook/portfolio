@@ -1,178 +1,24 @@
 // app/components/ProjectsSection.tsx
 "use client";
 
-import { useState, useEffect } from "react";
 import {
+  AlertTriangle,
   ChevronLeft,
   ChevronRight,
-  Sparkles,
-  Calendar,
-  User,
-  Clock,
   Code2,
-  Target,
   Lightbulb,
-  ExternalLink,
+  Sparkles,
+  Target,
 } from "lucide-react";
+import { useEffect, useState } from "react";
 import { Project } from "../lib/data/portfolio";
+import { useI18n } from "../locales/client";
 
-export default function ProjectsSection({
-  projectsData,
-}: {
-  projectsData: Project[];
-}) {
+export default function ProjectsSection({ projects }: { projects: Project[] }) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isHovering, setIsHovering] = useState(false);
-
-  const projects = [
-    {
-      id: 1,
-      title: "Plateforme de gestion intégrale pour centre de formation",
-      description:
-        "Application web complète permettant d’administrer les élèves, les professeurs, les formations, les plannings, les notes, les devoirs, les documents et les absences grâce à un tableau de bord moderne et automatisé.",
-      images: [
-        "/images/projet/CFM/1.png",
-        "/images/projet/CFM/2.png",
-        "/images/projet/CFM/3.png",
-        "/images/projet/CFM/4.png",
-        "/images/projet/CFM/5.png",
-        "/images/projet/CFM/8.png",
-        "/images/projet/CFM/9.png",
-        "/images/projet/CFM/10.png",
-        "/images/projet/CFM/11.png",
-      ],
-      tags: ["Laravel", "Livewire", "Vue.js", "MySQL"],
-      client: "",
-      year: "2023",
-      duration: "1 an",
-      link: "",
-      challenge:
-        "Unifier dans une seule plateforme des modules auparavant gérés sur des outils dispersés (Excel, Google Drive, WhatsApp). Permettre une gestion fiable des plannings et notes avec des droits d’accès stricts.",
-      solution:
-        "Conception d’un back-office modulaire avec gestion des rôles, génération automatique de documents, notifications internes, suivi des élèves et système d’absences sophistiqué. Optimisation des performances avec Livewire.",
-      color: "from-blue-500 to-cyan-500",
-    },
-    {
-      id: 2,
-      title:
-        "Application mobile ludique de découverte des édifices historiques",
-      description:
-        "Une expérience mobile immersive permettant de découvrir des églises et monuments grâce à des anecdotes, mini-jeux, contenus 3D, informations historiques et parcours guidés.",
-      images: [
-        "/images/projet/GA/1.png",
-        "/images/projet/GA/2.png",
-        "/images/projet/GA/3.png",
-        "/images/projet/GA/4.png",
-        "/images/projet/GA/5.png",
-        "/images/projet/GA/6.png",
-        "/images/projet/GA/7.png",
-        "/images/projet/GA/8.png",
-        "/images/projet/GA/9.png",
-        "/images/projet/GA/10.png",
-        "/images/projet/GA/11.png",
-        "/images/projet/GA/12.png",
-        "/images/projet/GA/13.png",
-        "/images/projet/GA/14.png",
-        "/images/projet/GA/15.png",
-        "/images/projet/GA/16.png",
-        "/images/projet/GA/17.png",
-        "/images/projet/GA/18.png",
-        "/images/projet/GA/19.png",
-        "/images/projet/GA/20.png",
-        "/images/projet/GA/21.png",
-        "/images/projet/GA/22.png",
-        "/images/projet/GA/23.png",
-      ],
-      tags: ["React", "Ionic", "Capacitor", "Three.js"],
-      client: "",
-      year: "2025",
-      duration: "6 mois",
-      link: "",
-      challenge:
-        "Créer une expérience culturelle attractive pour les jeunes tout en intégrant du contenu historique fiable, de la 3D et des mini-jeux, sans sacrifier les performances.",
-      solution:
-        "Développement d’un moteur 3D léger avec Three.js, mise en place d’un système de quiz/XP, optimisation du cache mobile et intégration d’un CMS pour la gestion des récits et médias.",
-      color: "from-purple-500 to-pink-500",
-    },
-    {
-      id: 3,
-      title: "Plateforme de réservation d'hôtels avec négociation de prix",
-      description:
-        "Application mobile + backoffice hôtelier permettant de rechercher un hôtel selon dates, localisation, nb de personnes, négocier les prix, recevoir des contre-offres, payer en ligne et gérer les réservations.",
-      images: [
-        "/images/projet/Matchroom/BO/1.png",
-        "/images/projet/Matchroom/BO/2.png",
-        "/images/projet/Matchroom/BO/3.png",
-        "/images/projet/Matchroom/BO/4.png",
-        "/images/projet/Matchroom/BO/5.png",
-        "/images/projet/Matchroom/BO/6.png",
-        "/images/projet/Matchroom/Front/1.png",
-        "/images/projet/Matchroom/Front/2.png",
-        "/images/projet/Matchroom/Front/3.png",
-        "/images/projet/Matchroom/Front/4.png",
-        "/images/projet/Matchroom/Front/5.png",
-        "/images/projet/Matchroom/Front/6.png",
-        "/images/projet/Matchroom/Front/7.png",
-        "/images/projet/Matchroom/Front/8.png",
-        "/images/projet/Matchroom/Front/9.png",
-        "/images/projet/Matchroom/Front/10.png",
-        "/images/projet/Matchroom/Front/11.png",
-        "/images/projet/Matchroom/Front/12.png",
-        "/images/projet/Matchroom/Front/13.png",
-        "/images/projet/Matchroom/Front/14.png",
-        "/images/projet/Matchroom/Front/15.png",
-        "/images/projet/Matchroom/Front/16.png",
-        "/images/projet/Matchroom/Front/17.png",
-      ],
-      tags: ["Next.js", "Supabase", "Refine", "Stripe", "OpenGDS"],
-      client: "",
-      year: "2024",
-      duration: "8 mois",
-      link: "",
-      challenge:
-        "Intégrer un système de négociation en temps réel entre client et hôtelier, tout en synchronisant les disponibilités via OpenGDS et en assurant un paiement sécurisé.",
-      solution:
-        "Mise en place d’un système de chat transactionnel, gestion dynamique des tarifs, automatisation des notifications, tableaux de bord pour hôteliers et intégration Stripe pour les paiements.",
-      color: "from-orange-500 to-red-500",
-    },
-    {
-      id: 4,
-      title: "Application mobile sociale pour la gestion d’événements",
-      description:
-        "Créer et découvrir des événements, inviter des amis, gérer les participants, discuter en direct, réserver via wallet interne et payer en ligne.",
-      images: [
-        "/images/projet/Tedispo/7.png",
-        "/images/projet/Tedispo/8.png",
-        "/images/projet/Tedispo/9.png",
-        "/images/projet/Tedispo/10.png",
-        "/images/projet/Tedispo/11.png",
-        "/images/projet/Tedispo/12.png",
-        "/images/projet/Tedispo/15.png",
-        "/images/projet/Tedispo/16.png",
-        "/images/projet/Tedispo/17.png",
-        "/images/projet/Tedispo/18.png",
-        "/images/projet/Tedispo/19.png",
-        "/images/projet/Tedispo/20.png",
-        "/images/projet/Tedispo/21.png",
-        "/images/projet/Tedispo/22.png",
-        "/images/projet/Tedispo/23.png",
-        "/images/projet/Tedispo/24.png",
-        "/images/projet/Tedispo/25.png",
-        "/images/projet/Tedispo/26.png",
-      ],
-      tags: ["React", "Ionic", "Firebase", "Capacitor", "Strapi"],
-      client: "",
-      year: "2022",
-      duration: "8 mois",
-      link: "",
-      challenge:
-        "Gérer en temps réel les participants, invitations, messages groupés et paiements — le tout dans une seule app performante.",
-      solution:
-        "Mise en place de Firebase pour le temps réel, Strapi pour la gestion des contenus, un wallet interne pour les réservations et une UX fluide inspirée des réseaux sociaux modernes.",
-      color: "from-green-500 to-emerald-500",
-    },
-  ];
+  const t = useI18n();
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % projects.length);
@@ -194,7 +40,6 @@ export default function ProjectsSection({
         (prev - 1 + currentProject.images.length) % currentProject.images.length
     );
   };
-
   const currentProject = projects[currentSlide];
 
   // Auto-scroll images every 1s
@@ -227,13 +72,13 @@ export default function ProjectsSection({
           <div className="inline-flex items-center gap-2 px-3 md:px-4 py-1.5 md:py-2 rounded-full bg-indigo-500/10 border border-indigo-500/20 backdrop-blur-xl mb-3 md:mb-4">
             <Sparkles className="w-3 h-3 md:w-4 md:h-4 text-indigo-400" />
             <span className="text-xs md:text-sm font-semibold text-indigo-300">
-              Projets Récents
+              {t("projects.badge")}
             </span>
           </div>
 
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black">
             <span className="bg-gradient-to-r from-white via-indigo-200 to-purple-200 bg-clip-text text-transparent">
-              Mes Réalisations
+              {t("projects.title")}
             </span>
           </h2>
         </div>
@@ -256,13 +101,32 @@ export default function ProjectsSection({
                 />
                 <img
                   src={currentProject.images[currentImageIndex]}
-                  alt={`${currentProject.title} - Image ${
-                    currentImageIndex + 1
-                  }`}
+                  alt={
+                    t(`projects.list.${currentProject.key}.title`) +
+                    ` - Image ${currentImageIndex + 1}`
+                  }
                   className="relative z-10 w-full h-full object-contain transition-transform duration-700 group-hover:scale-105"
                 />
 
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent lg:bg-gradient-to-r lg:from-transparent lg:via-transparent lg:to-slate-950/50" />
+
+                <div
+                  className="z-52
+                    absolute bottom-2 left-1/2 -translate-x-1/2 
+                    px-3 py-1.5 
+                    rounded-lg
+                    bg-red-600/90 
+                    text-white text-[10px] font-bold 
+                    shadow-lg shadow-red-900/50 
+                    border border-white/30 
+                    flex items-center gap-1 
+                    backdrop-blur-sm
+                    w-full
+                  "
+                >
+                  <AlertTriangle className="w-3 h-3 text-white" />
+                  {t("projects.confidential")}
+                </div>
 
                 {/* Image Navigation (only if multiple images) */}
                 {currentProject.images.length > 1 && (
@@ -281,11 +145,6 @@ export default function ProjectsSection({
                     >
                       <ChevronRight className="w-4 h-4 md:w-5 md:h-5" />
                     </button>
-
-                    {/* Image Counter */}
-                    <div className="absolute bottom-2 md:bottom-3 left-1/2 -translate-x-1/2 px-2 md:px-3 py-1 rounded-full bg-black/50 backdrop-blur-sm text-white text-xs font-medium">
-                      {currentImageIndex + 1} / {currentProject.images.length}
-                    </div>
                   </>
                 )}
               </div>
@@ -296,61 +155,11 @@ export default function ProjectsSection({
               {/* Desktop Title & Description - hidden on mobile */}
               <div className="mb-3 md:mb-4">
                 <h3 className="text-xl md:text-2xl lg:text-3xl font-black text-white mb-2">
-                  {currentProject.title}
+                  {t(`projects.list.${currentProject.key}.title`)}
                 </h3>
                 <p className="text-slate-300 text-sm md:text-base">
-                  {currentProject.description}
+                  {t(`projects.list.${currentProject.key}.description`)}
                 </p>
-              </div>
-              {/* Info Grid - Compact */}
-              <div className="grid grid-cols-2 gap-2 mb-3 md:mb-4">
-                {!!currentProject.client && (
-                  <div className="p-2 md:p-3 bg-white/5 rounded-lg border border-white/10">
-                    <div className="flex items-center gap-1 md:gap-2 mb-1">
-                      <User className="w-3 h-3 md:w-4 md:h-4 text-blue-400" />
-                      <span className="text-xs text-slate-400">Client</span>
-                    </div>
-                    <p className="text-white font-semibold text-xs md:text-sm truncate">
-                      {currentProject.client}
-                    </p>
-                  </div>
-                )}
-
-                {/* <div className="p-2 md:p-3 bg-white/5 rounded-lg border border-white/10">
-                  <div className="flex items-center gap-1 md:gap-2 mb-1">
-                    <Calendar className="w-3 h-3 md:w-4 md:h-4 text-purple-400" />
-                    <span className="text-xs text-slate-400">Année</span>
-                  </div>
-                  <p className="text-white font-semibold text-xs md:text-sm">
-                    {currentProject.year}
-                  </p>
-                </div>
-
-                <div className="p-2 md:p-3 bg-white/5 rounded-lg border border-white/10">
-                  <div className="flex items-center gap-1 md:gap-2 mb-1">
-                    <Clock className="w-3 h-3 md:w-4 md:h-4 text-cyan-400" />
-                    <span className="text-xs text-slate-400">Durée</span>
-                  </div>
-                  <p className="text-white font-semibold text-xs md:text-sm">
-                    {currentProject.duration}
-                  </p>
-                </div> */}
-
-                {!!currentProject.link && (
-                  <div className="p-2 md:p-3 bg-white/5 rounded-lg border border-white/10">
-                    <a
-                      href={currentProject.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-1 md:gap-2 text-green-400 hover:text-green-300 transition-colors group"
-                    >
-                      <ExternalLink className="w-3 h-3 md:w-4 md:h-4" />
-                      <span className="text-xs md:text-sm font-semibold">
-                        Voir
-                      </span>
-                    </a>
-                  </div>
-                )}
               </div>
 
               {/* Technologies - Compact */}
@@ -358,7 +167,7 @@ export default function ProjectsSection({
                 <div className="flex items-center gap-2 mb-2">
                   <Code2 className="w-3 h-3 md:w-4 md:h-4 text-indigo-400" />
                   <h4 className="text-white font-bold text-xs md:text-sm">
-                    Technologies
+                    {t("projects.technologies")}
                   </h4>
                 </div>
                 <div className="flex flex-wrap gap-1.5 z-50">
@@ -379,11 +188,11 @@ export default function ProjectsSection({
                   <div className="flex items-center gap-2 mb-1">
                     <Target className="w-3 h-3 md:w-4 md:h-4 text-orange-400" />
                     <h4 className="text-white font-bold text-xs md:text-sm">
-                      Challenge
+                      {t("projects.challenge")}
                     </h4>
                   </div>
                   <p className="text-slate-300 text-xs leading-relaxed line-clamp-2 md:line-clamp-none">
-                    {currentProject.challenge}
+                    {t(`projects.list.${currentProject.key}.challenge`)}
                   </p>
                 </div>
 
@@ -391,11 +200,11 @@ export default function ProjectsSection({
                   <div className="flex items-center gap-2 mb-1">
                     <Lightbulb className="w-3 h-3 md:w-4 md:h-4 text-green-400" />
                     <h4 className="text-white font-bold text-xs md:text-sm">
-                      Solution
+                      {t("projects.solution")}
                     </h4>
                   </div>
                   <p className="text-slate-300 text-xs leading-relaxed line-clamp-2 md:line-clamp-none">
-                    {currentProject.solution}
+                    {t(`projects.list.${currentProject.key}.solution`)}
                   </p>
                 </div>
               </div>
@@ -433,7 +242,9 @@ export default function ProjectsSection({
                   ? "ring-2 md:ring-3 ring-white scale-110"
                   : "opacity-50 hover:opacity-100"
               }`}
-              aria-label={`Voir ${project.title}`}
+              aria-label={
+                "Voir " + t(`projects.list.${currentProject.key}.title`)
+              }
             >
               <img
                 src={project.images[0]}
@@ -442,7 +253,7 @@ export default function ProjectsSection({
               />
               <img
                 src={project.images[0]}
-                alt={project.title}
+                alt={t(`projects.list.${currentProject.key}.title`)}
                 className="relative z-10 w-full h-full object-contain"
               />
               {currentSlide === idx && (

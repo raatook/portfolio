@@ -1,205 +1,156 @@
-// locales/fr.ts
+// app/locales/fr.ts
 export default {
+  // Layout & Navigation
+  nav: {
+    home: "Accueil",
     services: "Services",
-    projects: {
-      projects: "Projects",
-      title: "Réalisations — Applications",
-      subtitle: "Une sélection de projets web et mobile réalisés.",
-      searchPlaceholder: "🔍 Rechercher un projet...",
-      allSkills: "Toutes les compétences",
-      loading: "Chargement des projets...",
-      noTitle: "Projet sans titre",
-      noDescription: "Aucune description disponible.",
-      view: "Voir",
-      viewAll: "Voir tous les projets",
-      proj_rec: "Projets Récents",
-      backToProjects: "Retour aux projets",
-      aboutProject: "À propos du projet",
-      client: "Client:",
-      year: "Année:",
-      duration: "Durée:",
-      link: "Lien:",
-      technologies: "Technologies",
-      challenge: "Le défi",
-      solution: "La solution",
-      notFound: "Projet non trouvé",
-      error: "Erreur",
-      none: "Aucun projet trouvé.",
-    },
-    about: "À propos",
-    blog: "Blog",
-    contact: "Contact",
-    language: "Langue",
-    home: {
-      label: "Accueil",
-      hero: {
-        title: "Développez vos plateformes web, data et IA",
-        subtitle:
-          "Depuis 2018, nous aidons les startups, PME et grands groupes à intégrer pleinement les données et l'intelligence artificielle au cœur de leurs stratégies de croissance.",
-        cta: "Entrons en contact",
-        projects: "Voir nos projets",
-      },
-      stats: {
-        projects: "Projets réalisés",
-        years: "Années d'expérience",
-        clients: "Clients satisfaits",
-        satisfaction: "Satisfaction",
-      },
-      clients: {
-        title: "Ils nous font confiance",
-      },
-      services: {
-        title: "Une expertise de pointe",
-        subtitle:
-          "Des services adaptés aux entreprises ambitieuses qui souhaitent innover",
-        development: {
-          title: "Développement sur mesure",
-          description:
-            "Nous imaginons, concevons, développons et déployons vos applications en bout-en-bout. De l'idéation au déploiement, nous vous accompagnons à chaque étape.",
-        },
-        data: {
-          title: "Data Science",
-          description:
-            "Exploitez vos données pour prendre des décisions éclairées grâce à des analyses avancées et des tableaux de bord intuitifs.",
-        },
-        ai: {
-          title: "Intelligence Artificielle",
-          description:
-            "Exploitez le potentiel de l'IA générative pour construire des assistants intelligents et optimiser vos processus métier.",
-        },
-        my_serv: "Nos Services",
-      },
-      cta: {
-        title: "Prêt à donner vie à votre projet ?",
-        subtitle:
-          "Laissez-nous quelques mots, nous répondons dans les heures qui suivent.",
-        button: "Commencer maintenant",
-      },
-      competences: {
-        title: "Ensemble, donnons vie à votre projet digital.",
-        subtitle:
-          "Des solutions sur mesure, adaptées à vos besoins et à vos objectifs",
-        my_exp: "Nos Expertises",
-      },
-      contact: {
-        title: "Parlons de votre projet",
-        subtitle:
-          "Vous avez un projet en tête ? Discutons-en ensemble et donnons vie à vos idées.",
-        name: "Nom complet",
-        email: "Email",
-        subject: "Sujet",
-        message: "Message",
-        send: "Envoyer",
-        sending: "Envoi...",
-        successTitle: "Message envoyé !",
-        successMessage: "Nous vous répondrons dans les plus brefs délais.",
-        namePlaceholder: "John Doe",
-        emailPlaceholder: "vous@exemple.com",
-        subjectPlaceholder: "Objet de votre message",
-        messagePlaceholder: "Décrivez votre projet...",
-        contactMe: "Contactez-nous",
-      },
-      addedValues: {
-        title: "Notre Valeur Ajoutée",
-        subtitle: "Ce qui fait la différence dans notre façon de travailler",
-        badge: "Pourquoi nous choisir",
-      },
-    },
+    projects: "Projets",
+  },
 
-    auth: {
-        login: {
-            title: "Connexion",
-            email: "Email",
-            emailPlaceholder: "vous@exemple.com",
-            password: "Mot de passe",
-            passwordPlaceholder: "••••••••",
-            rememberMe: "Se souvenir de moi",
-            forgotPassword: "Mot de passe oublié ?",
-            submitButton: "Se connecter",
-            noAccount: "Pas encore de compte ? S'inscrire",
-            invalidEmail: "Email invalide",
-            passwordRequired: "Mot de passe requis",
-            invalidCredentials: "Email ou mot de passe incorrect",
-            checkInfo: "Veuillez vérifier vos informations",
-            genericError: "Une erreur est survenue. Veuillez réessayer.",
-        },
-        signup: {
-            title: "Créer un compte",
-            subtitle: "Rejoignez-nous dès maintenant",
-            name: "Nom complet",
-            namePlaceholder: "John Doe",
-            email: "Email",
-            emailPlaceholder: "vous@exemple.com",
-            password: "Mot de passe",
-            passwordPlaceholder: "••••••••",
-            passwordConfirmation: "Confirmer le mot de passe",
-            passwordHint: "8 caractères minimum, dont une majuscule et un chiffre",
-            submitButton: "S'inscrire",
-            hasAccount: "Déjà un compte ? Se connecter",
-            nameMinLength: "Le nom doit contenir au moins 2 caractères",
-            invalidEmail: "Email invalide",
-            passwordMinLength: "Le mot de passe doit contenir au moins 8 caractères",
-            passwordUppercase: "Au moins une majuscule requise",
-            passwordNumber: "Au moins un chiffre requis",
-            passwordMismatch: "Les mots de passe ne correspondent pas",
-            genericError: "Une erreur est survenue. Veuillez réessayer.",
-        },
-        confirmCode: {
-            title: "Confirmer votre email",
-            subtitle: "Un code a été envoyé à",
-            codeLabel: "Code de vérification",
-            codeMinLength: "Le code doit contenir au moins 4 chiffres",
-            codeMaxLength: "Le code doit contenir 4 chiffres",
-            submitButton: "Vérifier",
-            genericError: "Une erreur est survenue. Veuillez réessayer.",
-        },
-        resetPassword: {
-            title: "Réinitialisation du mot de passe",
-            invalidCredentials: "Email incorrect",
-            emailSent:
-                "Un email avec le lien de réinitialisation a été envoyé dans votre boîte mail.",
-            passwordMin: "Le mot de passe doit contenir au moins 6 caractères.",
-            passwordMismatch: "La confirmation du mot de passe ne correspond pas.",
-            newPassword: "Nouveau mot de passe",
-            success: "Mot de passe réinitialisé avec succès !",
-            newPasswordPlaceholder: "Entrez votre nouveau mot de passe",
-            confirmPassword: "Confirmer le mot de passe",
-            confirmPasswordPlaceholder: "Confirmez votre nouveau mot de passe",
-            submitButton: "Réinitialiser le mot de passe",
-            genericError:
-                "Une erreur est survenue lors de la réinitialisation du mot de passe.",
-        },
-    },
-
-    footer: {
-      aboutTitle: "À propos",
-      description:
-        "Développeur Full Stack passionné par la création d'expériences web innovantes et performantes. Expert en développement web, data et IA.",
-      navigation: "Navigation",
-      contactTitle: "Contact",
-      email: "Email",
-      phone: "Téléphone",
-      location: "Localisation",
-      rights: "Tous droits réservés.",
-      privacy: "Confidentialité",
-      terms: "Conditions",
-      my_exp: "Nos Expertises",
-      socialTitle: "Réseaux sociaux",
-    },
-
-    admin: {
-      dashboard: "Tableau de bord",
+  // Hero Section
+  hero: {
+    badge: "Développeur Full Stack",
+    title1: "Créons l'Avenir",
+    title2: "Ensemble",
+    description: "Expert en développement {web}, {data} & {ia}. Je transforme vos idées en solutions digitales innovantes et performantes.",
+    web: "Web",
+    data: "Data",
+    ia: "IA",
+    stats: {
       projects: "Projets",
-      services: "Services",
-      expertises: "Expertises",
-      roles: "Roles",
-      competences: "Compétences",
-      contacts: "Contacts",
-      users: "Utilisateurs",
-      settings: "Paramètres",
-      backToSite: "Retour au site",
-      welcome: "Bienvenue",
-      profile: "Profile",
-      logout: "Deconnexion",
+      years: "Années",
+      satisfaction: "Satisfaction",
     },
-  } as const;
+    values: {
+      performance: {
+        title: "Performance Optimale",
+        description: "Code optimisé et architectures scalables",
+      },
+      security: {
+        title: "Sécurité Renforcée",
+        description: "Protection des données et best practices",
+      },
+      deployment: {
+        title: "Déploiement Rapide",
+        description: "Méthodologies agiles et CI/CD",
+      },
+      ux: {
+        title: "UX Exceptionnelle",
+        description: "Interfaces intuitives et modernes",
+      },
+      maintenance: {
+        title: "Maintenance Facilitée",
+        description: "Code propre et documenté",
+      },
+      roi: {
+        title: "ROI Maximisé",
+        description: "Solutions rentables et mesurables",
+      },
+    },
+  },
+
+  // Services Section
+  services: {
+    badge: "Services & Expertise",
+    title: "Ce que je propose",
+    subtitle: "Solutions puissantes, rapides et modernes",
+    techStack: "Stack Technique",
+    techStackSubtitle: "Technologies principales",
+    list: {
+      web: {
+        title: "Développement Web",
+        description: "Applications web modernes, performantes et responsive",
+      },
+      mobile: {
+        title: "Développement Mobile",
+        description: "Apps natives et cross-platform iOS & Android",
+      },
+      data: {
+        title: "Data Engineering",
+        description: "Architecture data, ETL, analyse de données",
+      },
+      ai: {
+        title: "Intelligence Artificielle",
+        description: "Solutions IA, Machine Learning, NLP",
+      },
+      devops: {
+        title: "Déploiement & DevOps",
+        description: "CI/CD, containerisation, cloud",
+      },
+      maintenance: {
+        title: "Maintenance & Support",
+        description: "Monitoring, debugging, évolutions",
+      },
+    },
+  },
+
+  // Projects Section
+  projects: {
+    badge: "Projets Récents",
+    title: "Mes Réalisations",
+    client: "Client",
+    year: "Année",
+    duration: "Durée",
+    technologies: "Technologies",
+    challenge: "Challenge",
+    solution: "Solution",
+    viewProject: "Voir",
+    viewMore: "Voir plus",
+    prevImage: "Image précédente",
+    nextImage: "Image suivante",
+    prevProject: "Projet précédent",
+    nextProject: "Projet suivant",
+    list: {
+      cfm: {
+        title: "Plateforme de gestion intégrale pour centre de formation",
+        description: "Application web complète permettant d'administrer les élèves, les professeurs, les formations, les plannings, les notes, les devoirs, les documents et les absences grâce à un tableau de bord moderne et automatisé.",
+        challenge: "Unifier dans une seule plateforme des modules auparavant gérés sur des outils dispersés (Excel, Google Drive, WhatsApp). Permettre une gestion fiable des plannings et notes avec des droits d'accès stricts.",
+        solution: "Conception d'un back-office modulaire avec gestion des rôles, génération automatique de documents, notifications internes, suivi des élèves et système d'absences sophistiqué. Optimisation des performances avec Livewire.",
+      },
+      monument: {
+        title: "Application mobile ludique de découverte des édifices historiques",
+        description: "Une expérience mobile immersive permettant de découvrir des églises et monuments grâce à des anecdotes, mini-jeux, contenus 3D, informations historiques et parcours guidés.",
+        challenge: "Créer une expérience culturelle attractive pour les jeunes tout en intégrant du contenu historique fiable, de la 3D et des mini-jeux, sans sacrifier les performances.",
+        solution: "Développement d'un moteur 3D léger avec Three.js, mise en place d'un système de quiz/XP, optimisation du cache mobile et intégration d'un CMS pour la gestion des récits et médias.",
+      },
+      hotel: {
+        title: "Plateforme de réservation d'hôtels avec négociation de prix",
+        description: "Application mobile + backoffice hôtelier permettant de rechercher un hôtel selon dates, localisation, nb de personnes, négocier les prix, recevoir des contre-offres, payer en ligne et gérer les réservations.",
+        challenge: "Intégrer un système de négociation en temps réel entre client et hôtelier, tout en synchronisant les disponibilités via OpenGDS et en assurant un paiement sécurisé.",
+        solution: "Mise en place d'un système de chat transactionnel, gestion dynamique des tarifs, automatisation des notifications, tableaux de bord pour hôteliers et intégration Stripe pour les paiements.",
+      },
+      events: {
+        title: "Application mobile sociale pour la gestion d'événements",
+        description: "Créer et découvrir des événements, inviter des amis, gérer les participants, discuter en direct, réserver via wallet interne et payer en ligne.",
+        challenge: "Gérer en temps réel les participants, invitations, messages groupés et paiements — le tout dans une seule app performante.",
+        solution: "Mise en place de Firebase pour le temps réel, Strapi pour la gestion des contenus, un wallet interne pour les réservations et une UX fluide inspirée des réseaux sociaux modernes.",
+      },
+    },
+    confidential: "Certaines images sont floutées pour respecter la confidentialité du client."
+  },
+
+  // Contact Section (Sidebar & Floating Button)
+  contact: {
+    title: "Contactez-moi",
+    quickMessage: "Message rapide",
+    sendMessage: "Envoyez un message",
+    name: "Votre nom",
+    email: "Votre email",
+    emailPlaceholder: "Email",
+    message: "Votre message...",
+    send: "Envoyer le message",
+    sending: "Envoi en cours...",
+    success: "Message envoyé !",
+    responseTime: "Je vous répondrai dans les plus brefs délais",
+    talkAboutProject: "Parlez-moi de votre projet !",
+    close: "Fermer",
+    location: "Paris, France",
+  },
+
+  // SEO & Meta
+  seo: {
+    title: "RTook - Développeur Full Stack | Web, Mobile, Data & IA",
+    description: "Développeur Full Stack expert en React, Next.js, Laravel, Ionic. Création d'applications web, mobile, solutions data et IA. 5+ ans d'expérience. Portfolio et projets.",
+    keywords: "développeur full stack, react, next.js, laravel, ionic, développement web, développement mobile, data engineering, intelligence artificielle, paris, freelance",
+  },
+} as const;

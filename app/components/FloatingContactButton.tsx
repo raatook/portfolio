@@ -16,6 +16,7 @@ import {
   Linkedin,
   Twitter,
 } from "lucide-react";
+import { useI18n } from "../locales/client";
 
 export default function FloatingContactButton() {
   const [isOpen, setIsOpen] = useState(false);
@@ -26,17 +27,36 @@ export default function FloatingContactButton() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const t = useI18n();
 
   const handleSubmit = async () => {
     setIsSubmitting(true);
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    setIsSubmitting(false);
-    setIsSuccess(true);
-    setFormData({ name: "", email: "", message: "" });
-    setTimeout(() => {
-      setIsSuccess(false);
-      setIsOpen(false);
-    }, 2000);
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        setIsSuccess(true);
+        setFormData({ name: "", email: "", message: "" });
+        setTimeout(() => {
+          setIsSuccess(false);
+          setIsOpen(false);
+        }, 2000);
+      } else {
+        alert("Erreur lors de l'envoi du message : " + data.error);
+      }
+    } catch (err) {
+      console.error(err);
+      alert("Erreur lors de l'envoi du message");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -68,7 +88,9 @@ export default function FloatingContactButton() {
                 <div className="w-10 h-10 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full flex items-center justify-center">
                   <MessageCircle className="w-5 h-5 text-white" />
                 </div>
-                <h3 className="text-xl font-bold text-white">Message rapide</h3>
+                <h3 className="text-xl font-bold text-white">
+                  {t("contact.quickMessage")}
+                </h3>
               </div>
               <button
                 onClick={() => setIsOpen(false)}
@@ -89,7 +111,7 @@ export default function FloatingContactButton() {
                   onChange={(e) =>
                     setFormData({ ...formData, name: e.target.value })
                   }
-                  placeholder="Votre nom"
+                  placeholder={t("contact.name")}
                   className="w-full pl-11 pr-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-slate-500 focus:border-indigo-500 focus:outline-none transition-colors"
                 />
               </div>
@@ -102,7 +124,7 @@ export default function FloatingContactButton() {
                   onChange={(e) =>
                     setFormData({ ...formData, email: e.target.value })
                   }
-                  placeholder="Votre email"
+                  placeholder={t("contact.email")}
                   className="w-full pl-11 pr-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-slate-500 focus:border-indigo-500 focus:outline-none transition-colors"
                 />
               </div>
@@ -115,7 +137,7 @@ export default function FloatingContactButton() {
                     setFormData({ ...formData, message: e.target.value })
                   }
                   rows={4}
-                  placeholder="Votre message..."
+                  placeholder={t("contact.message")}
                   className="w-full pl-11 pr-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-slate-500 focus:border-indigo-500 focus:outline-none resize-none transition-colors"
                 />
               </div>
@@ -128,43 +150,43 @@ export default function FloatingContactButton() {
                 {isSuccess ? (
                   <span className="flex items-center justify-center gap-2">
                     <CheckCircle className="w-5 h-5" />
-                    Message envoyé !
+                    {t("contact.success")}
                   </span>
                 ) : isSubmitting ? (
                   <span className="flex items-center justify-center gap-2">
                     <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                    Envoi en cours...
+                    {t("contact.sending")}
                   </span>
                 ) : (
                   <span className="flex items-center justify-center gap-2">
-                    Envoyer le message
+                    {t("contact.send")}
                     <Send className="w-5 h-5" />
                   </span>
                 )}
               </button>
 
               <p className="text-center text-xs text-slate-400">
-                Je vous répondrai dans les plus brefs délais
+                {t("contact.responseTime")}
               </p>
 
               {/* Contact Infos */}
               <div className="mt-4 space-y-2 border-t border-white/10 pt-4">
                 <div className="flex items-center gap-2 text-white text-sm">
                   <Mail className="w-4 h-4 text-indigo-400" />
-                  <span>contact@exemple.com</span>
+                  <span>tokyfreel@gmail.com</span>
                 </div>
                 <div className="flex items-center gap-2 text-white text-sm">
                   <Phone className="w-4 h-4 text-purple-400" />
-                  <span>+33 6 12 34 56 78</span>
+                  <span>+261 37 76 574 42</span>
                 </div>
-                <div className="flex items-center gap-2 text-white text-sm">
+                {/* <div className="flex items-center gap-2 text-white text-sm">
                   <MapPin className="w-4 h-4 text-pink-400" />
                   <span>Paris, France</span>
-                </div>
+                </div> */}
               </div>
 
               {/* Social Links */}
-              <div className="mt-4 flex gap-3 justify-center">
+              {/* <div className="mt-4 flex gap-3 justify-center">
                 {[
                   { icon: Github, href: "https://github.com", label: "GitHub" },
                   {
@@ -189,7 +211,7 @@ export default function FloatingContactButton() {
                     <social.icon className="w-5 h-5 text-white" />
                   </a>
                 ))}
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

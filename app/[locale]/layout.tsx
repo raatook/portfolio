@@ -50,29 +50,29 @@ export async function generateMetadata({
       telephone: true,
       email: true,
     },
-    openGraph: {
-      type: "website",
-      locale: locale === "fr" ? "fr_FR" : "en_US",
-      url: `https://votre-domaine.com/${locale}`,
-      siteName: "RTook Portfolio",
-      title: content.title,
-      description: content.description,
-      images: [
-        {
-          url: "/og-image.png",
-          width: 1200,
-          height: 630,
-          alt: "RTook - Développeur Full Stack",
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: content.title,
-      description: content.description,
-      images: ["/og-image.png"],
-      creator: "@votre_twitter",
-    },
+    // openGraph: {
+    //   type: "website",
+    //   locale: locale === "fr" ? "fr_FR" : "en_US",
+    //   url: `https://votre-domaine.com/${locale}`,
+    //   siteName: "RTook Portfolio",
+    //   title: content.title,
+    //   description: content.description,
+    //   images: [
+    //     {
+    //       url: "/og-image.png",
+    //       width: 1200,
+    //       height: 630,
+    //       alt: "RTook - Développeur Full Stack",
+    //     },
+    //   ],
+    // },
+    // twitter: {
+    //   card: "summary_large_image",
+    //   title: content.title,
+    //   description: content.description,
+    //   images: ["/og-image.png"],
+    //   creator: "@votre_twitter",
+    // },
     robots: {
       index: true,
       follow: true,
@@ -84,23 +84,23 @@ export async function generateMetadata({
         "max-snippet": -1,
       },
     },
-    alternates: {
-      canonical: `https://votre-domaine.com/${locale}`,
-      languages: {
-        "fr": "/fr",
-        "en": "/en",
-      },
-    },
+    // alternates: {
+    //   canonical: `https://votre-domaine.com/${locale}`,
+    //   languages: {
+    //     "fr": "/fr",
+    //     "en": "/en",
+    //   },
+    // },
     icons: {
-      icon: "/logo.png",
-      shortcut: "/logo.png",
-      apple: "/logo.png",
+      icon: "/logo.svg",
+      shortcut: "/logo.svg",
+      apple: "/logo.svg",
     },
-    verification: {
-      google: "votre-code-google-verification",
-      // yandex: "votre-code-yandex",
-      // bing: "votre-code-bing",
-    },
+    // verification: {
+    //   google: "votre-code-google-verification",
+    //   // yandex: "votre-code-yandex",
+    //   // bing: "votre-code-bing",
+    // },
   };
 }
 

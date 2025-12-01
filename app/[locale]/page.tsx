@@ -88,7 +88,7 @@ export default async function HomePage({
         {/* Sections avec balises sémantiques HTML5 + données server-side */}
         <HeroExpertiseSection />
         <ServicesExpertiseSection services={servicesData} techStack={techStackData}/>
-        <ProjectsSection projectsData={projectsData} />
+        <ProjectsSection projects={projectsData} />
         <FloatingContactButton />
       </div>
     </>

@@ -51,11 +51,28 @@ export default function ImprovedSidebar() {
 
   const handleSubmit = async () => {
     setIsSubmitting(true);
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    setIsSubmitting(false);
-    setIsSuccess(true);
-    setFormData({ name: "", email: "", message: "" });
-    setTimeout(() => setIsSuccess(false), 3000);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        setIsSuccess(true);
+        setFormData({ name: "", email: "", message: "" });
+        setTimeout(() => setIsSuccess(false), 3000);
+      } else {
+        alert("Erreur lors de l'envoi du message");
+      }
+    } catch (err) {
+      console.error(err);
+      alert("Erreur lors de l'envoi du message");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const navItems = [
@@ -88,17 +105,16 @@ export default function ImprovedSidebar() {
         {/* Navigation Menu - Icons only */}
         <div className="flex justify-around w-full mb-4 mt-2">
           {navItems.map((item) => {
-            // Choix des icônes selon l'id
             let IconComponent;
             switch (item.id) {
               case "home":
-                IconComponent = User; // tu peux remplacer par une icône "home"
+                IconComponent = User;
                 break;
               case "services":
-                IconComponent = Globe; // exemple pour services
+                IconComponent = Globe;
                 break;
               case "projects":
-                IconComponent = CheckCircle; // exemple pour projects
+                IconComponent = CheckCircle;
                 break;
               default:
                 IconComponent = User;
@@ -108,13 +124,16 @@ export default function ImprovedSidebar() {
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className={`flex-1 p-3 rounded-lg transition-all flex justify-center items-center ${
+                className={`flex-1 p-3 rounded-lg transition-all flex flex-col items-center justify-center gap-1 ${
                   activeSection === item.id
                     ? "bg-indigo-600 text-white shadow-md"
                     : "text-slate-600 bg-slate-100 hover:bg-slate-200 hover:text-slate-900"
                 }`}
               >
                 <IconComponent className="w-5 h-5" />
+                <span className="text-[10px] font-medium">
+                  {item.label[currentLocale]}
+                </span>
               </button>
             );
           })}

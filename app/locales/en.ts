@@ -1,139 +1,156 @@
+// app/locales/en.ts
 export default {
-  services: "Services",
-  projects: {
+  // Layout & Navigation
+  nav: {
+    home: "Home",
+    services: "Services",
     projects: "Projects",
-    title: "Portfolio — Applications",
-    subtitle: "A selection of completed web and mobile projects.",
-    searchPlaceholder: "🔍 Search for a project...",
-    allSkills: "All skills",
-    loading: "Loading projects...",
-    noTitle: "Untitled project",
-    noDescription: "No description available.",
-    view: "View",
-    viewAll: "View all projects",
-    proj_rec: "Recent Projects",
-    backToProjects: "Back to projects",
-    aboutProject: "About the project",
-    client: "Client:",
-    year: "Year:",
-    duration: "Duration:",
-    link: "Link:",
-    technologies: "Technologies",
-    challenge: "The challenge",
-    solution: "The solution",
-    notFound: "Project not found",
-    error: "Error",
-    none: "No projects found.",
   },
-  about: "About",
-  blog: "Blog",
-  contact: "Contact",
-  language: "Language",
-  home: {
-    label: "Home",
-    hero: {
-      title: "Build your web, data and AI platforms",
-      subtitle:
-        "Since 2018, we help startups, SMEs and large companies to fully integrate data and artificial intelligence at the heart of their growth strategies.",
-      cta: "Get in touch",
-      projects: "View our projects",
-    },
+
+  // Hero Section
+  hero: {
+    badge: "Full Stack Developer",
+    title1: "Let's Build the Future",
+    title2: "Together",
+    description: "Expert in {web}, {data} & {ai} development. I transform your ideas into innovative and high-performance digital solutions.",
+    web: "Web",
+    data: "Data",
+    ia: "AI",
     stats: {
-      projects: "Completed projects",
-      years: "Years of experience",
-      clients: "Satisfied clients",
+      projects: "Projects",
+      years: "Years",
       satisfaction: "Satisfaction",
     },
-    clients: {
-      title: "They trust us",
+    values: {
+      performance: {
+        title: "Optimal Performance",
+        description: "Optimized code and scalable architectures",
+      },
+      security: {
+        title: "Enhanced Security",
+        description: "Data protection and best practices",
+      },
+      deployment: {
+        title: "Fast Deployment",
+        description: "Agile methodologies and CI/CD",
+      },
+      ux: {
+        title: "Exceptional UX",
+        description: "Intuitive and modern interfaces",
+      },
+      maintenance: {
+        title: "Easy Maintenance",
+        description: "Clean and documented code",
+      },
+      roi: {
+        title: "Maximized ROI",
+        description: "Profitable and measurable solutions",
+      },
     },
-    services: {
-      title: "Cutting-edge expertise",
-      subtitle:
-        "Services tailored to ambitious companies looking to innovate",
-      development: {
-        title: "Custom Development",
-        description:
-          "We imagine, design, develop and deploy your applications end-to-end. From ideation to deployment, we support you every step of the way.",
+  },
+
+  // Services Section
+  services: {
+    badge: "Services & Expertise",
+    title: "What I Offer",
+    subtitle: "Powerful, fast and modern solutions",
+    techStack: "Tech Stack",
+    techStackSubtitle: "Main technologies",
+    list: {
+      web: {
+        title: "Web Development",
+        description: "Modern, high-performance and responsive web applications",
+      },
+      mobile: {
+        title: "Mobile Development",
+        description: "Native and cross-platform iOS & Android apps",
       },
       data: {
-        title: "Data Science",
-        description:
-          "Leverage your data to make informed decisions through advanced analytics and intuitive dashboards.",
+        title: "Data Engineering",
+        description: "Data architecture, ETL, data analysis",
       },
       ai: {
         title: "Artificial Intelligence",
-        description:
-          "Harness the potential of generative AI to build intelligent assistants and optimize your business processes.",
+        description: "AI solutions, Machine Learning, NLP",
       },
-      my_serv: "Our Services",
-    },
-    cta: {
-      title: "Ready to bring your project to life?",
-      subtitle:
-        "Leave us a few words, we respond within hours.",
-      button: "Get started now",
-    },
-    competences: {
-      title: "Together, let's bring your digital project to life.",
-      subtitle:
-        "Tailor-made solutions, adapted to your needs and objectives",
-      my_exp: "Our Expertise",
-    },
-    contact: {
-      title: "Let's talk about your project",
-      subtitle:
-        "Have a project in mind? Let's discuss it together and bring your ideas to life.",
-      name: "Full name",
-      email: "Email",
-      subject: "Subject",
-      message: "Message",
-      send: "Send",
-      sending: "Sending...",
-      successTitle: "Message sent!",
-      successMessage: "We will get back to you as soon as possible.",
-      namePlaceholder: "John Doe",
-      emailPlaceholder: "you@example.com",
-      subjectPlaceholder: "Subject of your message",
-      messagePlaceholder: "Describe your project...",
-      contactMe: "Contact us",
-    },
-    addedValues: {
-      title: "Our Added Value",
-      subtitle: "What makes the difference in the way we work",
-      badge: "Why choose us",
+      devops: {
+        title: "Deployment & DevOps",
+        description: "CI/CD, containerization, cloud",
+      },
+      maintenance: {
+        title: "Maintenance & Support",
+        description: "Monitoring, debugging, evolutions",
+      },
     },
   },
 
-  footer: {
-    aboutTitle: "About",
-    description:
-      "Full Stack Developer passionate about creating innovative and high-performance web experiences. Expert in web development, data and AI.",
-    navigation: "Navigation",
-    contactTitle: "Contact",
-    email: "Email",
-    phone: "Phone",
-    location: "Location",
-    rights: "All rights reserved.",
-    privacy: "Privacy",
-    terms: "Terms",
-    my_exp: "Our Expertise",
-    socialTitle: "Social media",
+  // Projects Section
+  projects: {
+    badge: "Recent Projects",
+    title: "My Work",
+    client: "Client",
+    year: "Year",
+    duration: "Duration",
+    technologies: "Technologies",
+    challenge: "Challenge",
+    solution: "Solution",
+    viewProject: "View",
+    viewMore: "View more",
+    prevImage: "Previous image",
+    nextImage: "Next image",
+    prevProject: "Previous project",
+    nextProject: "Next project",
+    list: {
+      cfm: {
+        title: "Comprehensive management platform for training center",
+        description: "Complete web application for managing students, teachers, courses, schedules, grades, assignments, documents and absences through a modern and automated dashboard.",
+        challenge: "Unifying modules previously managed on scattered tools (Excel, Google Drive, WhatsApp) into a single platform. Enabling reliable schedule and grade management with strict access rights.",
+        solution: "Design of a modular back-office with role management, automatic document generation, internal notifications, student tracking and sophisticated absence system. Performance optimization with Livewire.",
+      },
+      monument: {
+        title: "Educational mobile app for discovering historical buildings",
+        description: "An immersive mobile experience to discover churches and monuments through anecdotes, mini-games, 3D content, historical information and guided tours.",
+        challenge: "Creating an attractive cultural experience for young people while integrating reliable historical content, 3D and mini-games, without sacrificing performance.",
+        solution: "Development of a lightweight 3D engine with Three.js, implementation of a quiz/XP system, mobile cache optimization and integration of a CMS for managing stories and media.",
+      },
+      hotel: {
+        title: "Hotel booking platform with price negotiation",
+        description: "Mobile application + hotel back-office allowing to search for a hotel by dates, location, number of people, negotiate prices, receive counter-offers, pay online and manage bookings.",
+        challenge: "Integrating a real-time negotiation system between client and hotelier, while synchronizing availability via OpenGDS and ensuring secure payment.",
+        solution: "Implementation of a transactional chat system, dynamic pricing management, notification automation, dashboards for hoteliers and Stripe integration for payments.",
+      },
+      events: {
+        title: "Social mobile app for event management",
+        description: "Create and discover events, invite friends, manage participants, chat in real-time, book via internal wallet and pay online.",
+        challenge: "Managing participants, invitations, group messages and payments in real-time — all in a single high-performance app.",
+        solution: "Implementation of Firebase for real-time, Strapi for content management, an internal wallet for bookings and a fluid UX inspired by modern social networks.",
+      },
+    },
+    confidential: "Some images are blurred to respect client confidentiality."
   },
 
-  admin: {
-    dashboard: "Dashboard",
-    projects: "Projects",
-    services: "Services",
-    expertises: "Expertises",
-    roles: "Roles",
-    competences: "Skills",
-    contacts: "Contacts",
-    users: "Users",
-    settings: "Settings",
-    backToSite: "Back to site",
-    welcome: "Welcome",
-    profile: "Profile",
-    logout: "Logout",
+  // Contact Section (Sidebar & Floating Button)
+  contact: {
+    title: "Contact Me",
+    quickMessage: "Quick message",
+    sendMessage: "Send a message",
+    name: "Your name",
+    email: "Your email",
+    emailPlaceholder: "Email",
+    message: "Your message...",
+    send: "Send message",
+    sending: "Sending...",
+    success: "Message sent!",
+    responseTime: "I'll get back to you as soon as possible",
+    talkAboutProject: "Tell me about your project!",
+    close: "Close",
+    location: "Paris, France",
+  },
+
+  // SEO & Meta
+  seo: {
+    title: "RTook - Full Stack Developer | Web, Mobile, Data & AI",
+    description: "Full Stack Developer expert in React, Next.js, Laravel, Ionic. Web & mobile app development, data solutions and AI. 5+ years experience. Portfolio and projects.",
+    keywords: "full stack developer, react, next.js, laravel, ionic, web development, mobile development, data engineering, artificial intelligence, paris, freelance",
   },
 } as const;
