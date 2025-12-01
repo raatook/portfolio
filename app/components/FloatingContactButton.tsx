@@ -49,11 +49,11 @@ export default function FloatingContactButton() {
           setIsOpen(false);
         }, 2000);
       } else {
-        alert("Erreur lors de l'envoi du message : " + data.error);
+        // alert("Erreur lors de l'envoi du message : " + data.error);
       }
     } catch (err) {
       console.error(err);
-      alert("Erreur lors de l'envoi du message");
+      // alert("Erreur lors de l'envoi du message");
     } finally {
       setIsSubmitting(false);
     }

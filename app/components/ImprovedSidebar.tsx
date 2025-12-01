@@ -65,11 +65,11 @@ export default function ImprovedSidebar() {
         setFormData({ name: "", email: "", message: "" });
         setTimeout(() => setIsSuccess(false), 3000);
       } else {
-        alert("Erreur lors de l'envoi du message");
+        // alert("Erreur lors de l'envoi du message");
       }
     } catch (err) {
       console.error(err);
-      alert("Erreur lors de l'envoi du message");
+      // alert("Erreur lors de l'envoi du message");
     } finally {
       setIsSubmitting(false);
     }

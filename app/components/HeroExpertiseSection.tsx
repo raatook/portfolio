@@ -133,7 +133,7 @@ export default function HeroWithValuesSection() {
             </p> */}
 
             {/* Stats */}
-            <div className="grid grid-cols-3 gap-2 md:gap-3">
+            {/* <div className="grid grid-cols-3 gap-2 md:gap-3">
               {statsData.map((stat, idx) => (
                 <div
                   key={idx}
@@ -148,7 +148,7 @@ export default function HeroWithValuesSection() {
                   </div>
                 </div>
               ))}
-            </div>
+            </div> */}
           </div>
 
           {/* Right: Added Values Cards */}
